@@ -4,6 +4,7 @@ import './TopMenu.module.scss';
 import  {memo} from "react"
 import {classNames} from "@/shared/lib/classNames/classNames.ts";
 import logo from '@/assets/images/logo.png';
+import {useTranslation} from "react-i18next";
 
 
 interface TopMenuProps {
@@ -12,7 +13,7 @@ interface TopMenuProps {
 
 export const TopMenu = memo((props: TopMenuProps) => {
     // const {className} = props;
-    // const {t} = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <header className={cls.header}>
@@ -26,7 +27,9 @@ export const TopMenu = memo((props: TopMenuProps) => {
                                 alt="Inventory"
                                 className={cls.header__logoImage}
                             />
-                            <h2 className={cls.header__title}>INVENTORY</h2>
+                            <h2 className={cls.header__title}>
+                                {t("HEADER.TITLE")}
+                            </h2>
                         </div>
                         <div className={classNames(cls.header__search, {}, [`ms-5`])}>
                             <input

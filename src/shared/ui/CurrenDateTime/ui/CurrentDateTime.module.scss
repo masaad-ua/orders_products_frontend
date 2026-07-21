@@ -1,0 +1,27 @@
+.header {
+  &__day {
+    font-size: 16px;
+    color: #3f4a54;
+    margin-top: 8px;
+  }
+
+  &__dateTimeWrapper {
+    height: 100%;
+  }
+
+  &__dateTime {
+    font-size: 14px;
+  }
+
+  &__date,
+  &__time {
+    color: #6c757d;
+  }
+
+  &__clock {
+    color: #8bc34a;
+    margin: 0px 9px 0px 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

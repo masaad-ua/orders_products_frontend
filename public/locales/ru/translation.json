@@ -1,5 +1,6 @@
 {
   "HEADER": {
-    "TITLE": "INVENTORY"
+    "TITLE": "INVENTORY",
+    "INPUT_PLACEHOLDER": "Поиск"
   }
 }

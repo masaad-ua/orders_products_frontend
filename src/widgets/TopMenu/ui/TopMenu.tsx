@@ -1,19 +1,38 @@
-//import {useTranslation} from 'react-i18next';
 import cls from './TopMenu.module.scss';
 import './TopMenu.module.scss';
-import  {memo} from "react"
+import {memo} from "react"
 import {classNames} from "@/shared/lib/classNames/classNames.ts";
 import logo from '@/assets/images/logo.png';
 import {useTranslation} from "react-i18next";
 
+import {LanguagesEnum, LanguagesLocalesEnum} from "@/shared/const/languages.enum.ts";
+import {CurrentDateTime} from "@/shared/ui/CurrenDateTime";
+import {useSessions} from "@/features/sessions/model/useSessions.ts";
+import {SessionCounter} from "@/shared/ui/SessionCounter/ui/SessionCounter.tsx";
 
 interface TopMenuProps {
     className?: string;
 }
 
 export const TopMenu = memo((props: TopMenuProps) => {
-    // const {className} = props;
+    const { className } = props;
     const {t} = useTranslation();
+    const { i18n } = useTranslation();
+    const currentLanguage = i18n.resolvedLanguage;
+    const sessions = useSessions();
+
+    const getLocale = (languageI18n: string | undefined): LanguagesLocalesEnum => {
+        switch (languageI18n){
+            case LanguagesEnum.RU:
+                return LanguagesLocalesEnum.RU_LOCALE;
+            case LanguagesEnum.EN:
+                return LanguagesLocalesEnum.EN_LOCALE;
+            default:
+                return LanguagesLocalesEnum.RU_LOCALE;
+        }
+    }
+
+    const locate = getLocale(currentLanguage);
 
     return (
         <header className={cls.header}>
@@ -35,32 +54,18 @@ export const TopMenu = memo((props: TopMenuProps) => {
                             <input
                                 type="text"
                                 className={`form-control ${cls.header__searchInput}`}
-                                placeholder="Поиск"
+                                placeholder={t("HEADER.INPUT_PLACEHOLDER")}
                             />
                         </div>
                     </div>
-
-                    <div className={"d-flex align-items-end"}>
-                        <p className={classNames(cls.header__day)}>
-                            Вторник
-                        </p>
-                        <div className={classNames(cls.header__dateTime)}>
-
-                            <span className={classNames(cls.header__date)}>
-                                06 Apr, 2017
-                            </span>
-                            <i
-                                className={`bi bi-clock ${cls.header__clock}`}
-                            />
-
-                            <span className={cls.header__time}>
-                                17:20
-                            </span>
-
-                        </div>
-                    </div>
+                    <SessionCounter
+                        sessions={sessions}
+                    />
+                    <CurrentDateTime
+                        className ={cls.header__dateTimeWrapper}
+                        locale = {locate}
+                    />
                 </div>
-
             </div>
         </header>
     );

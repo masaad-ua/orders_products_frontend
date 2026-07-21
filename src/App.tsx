@@ -1,9 +1,9 @@
 import './App.scss'
-import {TopMenu} from "./widgets/TopMenu";
+import {Router} from "@/app/router/router.tsx";
 
 function App() {
   return (
-      <TopMenu></TopMenu>
+         <Router />
   )
 }
 

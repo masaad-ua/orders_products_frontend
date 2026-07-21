@@ -53,7 +53,7 @@ export const CurrentDateTime = memo((props: CurrentDateTimeProps) => {
     const dateInView: DateInViewI = getDate();
 
     return (
-        <div className={classNames(className,{}, ["d-flex flex-column align-items-start"])}>
+        <div className={classNames(className || "",{}, ["d-flex flex-column align-items-start"])}>
             <p className={classNames(cls.header__day)}>
                 {dateInView.day}
             </p>
@@ -71,7 +71,6 @@ export const CurrentDateTime = memo((props: CurrentDateTimeProps) => {
                     className={cls.header__time}>
                     {dateInView.time}
                 </span>
-
             </div>
         </div>
     );

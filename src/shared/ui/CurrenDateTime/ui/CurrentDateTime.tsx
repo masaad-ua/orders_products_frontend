@@ -59,9 +59,9 @@ export const CurrentDateTime = memo((props: CurrentDateTimeProps) => {
             </p>
             <div className={classNames(cls.header__dateTime, {}, ["d-flex align-items-center"])}>
 
-                            <span className={classNames(cls.header__date)}>
-                                {dateInView.date}
-                            </span>
+                <span className={classNames(cls.header__date)}>
+                    {dateInView.date}
+                </span>
                 <Clock9
                     size={14}
                     strokeWidth={3}

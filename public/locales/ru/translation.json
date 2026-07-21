@@ -1,6 +1,7 @@
 {
   "HEADER": {
     "TITLE": "INVENTORY",
-    "INPUT_PLACEHOLDER": "Поиск"
+    "INPUT_PLACEHOLDER": "Поиск",
+    "SESSION_COUNTER": "Счётчик сессий"
   }
 }

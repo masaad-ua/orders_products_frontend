@@ -58,13 +58,18 @@ export const TopMenu = memo((props: TopMenuProps) => {
                             />
                         </div>
                     </div>
-                    <SessionCounter
-                        sessions={sessions}
-                    />
-                    <CurrentDateTime
-                        className ={cls.header__dateTimeWrapper}
-                        locale = {locate}
-                    />
+                    <div className={"d-flex h_100"}>
+                        <SessionCounter
+                            className={classNames(cls.header__sessionCounter,
+                                {},
+                                ["d-flex", "align-items-end", "justify-content-start"])}
+                            sessions={sessions}
+                        />
+                        <CurrentDateTime
+                            className ={cls.header__dateTimeWrapper}
+                            locale = {locate}
+                        />
+                    </div>
                 </div>
             </div>
         </header>

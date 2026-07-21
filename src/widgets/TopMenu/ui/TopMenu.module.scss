@@ -22,6 +22,14 @@
     text-decoration: none;
 
   }
+  &__dateTimeWrapper {
+    height: 100%;
+  }
+
+  &__sessionCounter{
+    margin-right: 30px;
+    margin-bottom: 20px;
+  }
 
   &__logoImage {
     height: 42px;

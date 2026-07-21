@@ -15,7 +15,7 @@ export const SessionCounter = memo((props: SessionCounterProps) => {
 
     return (
         <div className={classNames(cls.SessionCounter, {}, [className])}>
-            {sessions}
+            <p>{ t("HEADER.SESSION_COUNTER") }:&nbsp;<span>{sessions}</span></p>
         </div>
     );
 });

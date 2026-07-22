@@ -2,12 +2,13 @@ import { Outlet } from 'react-router-dom';
 import {TopMenu} from "@/widgets/TopMenu";
 import {SideBar} from "@/widgets/SideBar";
 import {classNames} from "@/shared/lib/classNames/classNames.ts";
+import cls from "./MainLayout.module.scss"
 
 export function MainLayout() {
     return (
         <>
             <TopMenu />
-            <div className={"d-flex justify-content-between"}>
+            <div className={classNames(cls.layout, {}, ["d-flex", "justify-content-between"])}>
                 <SideBar/>
                 <main>
                     <Outlet />

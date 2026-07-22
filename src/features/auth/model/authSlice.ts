@@ -5,6 +5,7 @@ import {tokenStorage} from "@/shared/lib/tokenStorage/tokenStorage.ts";
 interface AuthState {
     token: string | null;
     isAuthenticated: boolean;
+    isLoading: boolean;
 }
 
 const token = tokenStorage.get();
@@ -12,12 +13,20 @@ const token = tokenStorage.get();
 const initialState: AuthState = {
     token,
     isAuthenticated: !!token,
+    isLoading: true,
 };
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
+        startLoading(state) {
+            state.isLoading = true;
+        },
+
+        finishLoading(state) {
+            state.isLoading = false;
+        },
         login(state, action: PayloadAction<string>){
             state.token = action.payload;
             state.isAuthenticated  = true;
@@ -33,5 +42,6 @@ const authSlice = createSlice({
 });
 
 
-export const { login, logout } = authSlice.actions;
+export const { login,     startLoading,
+    finishLoading, logout } = authSlice.actions;
 export const authReducer = authSlice.reducer;

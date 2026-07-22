@@ -13,20 +13,17 @@ import ProductsPage from "@/pages/ProductsPage/ui/ProductsPage.tsx";
 export const Router = ()=> (
     <BrowserRouter>
             <Routes>
-                {/*<Route*/}
-                {/*    element={*/}
-                {/*        <ProtectedRoute>*/}
-                {/*            <MainLayout />*/}
-                {/*        </ProtectedRoute>*/}
-                {/*    }*/}
-                {/*>*/}
                 <Route
-                    element={<MainLayout />}
+                    element={
+                        <ProtectedRoute>
+                            <MainLayout />
+                        </ProtectedRoute>
+                    }
                 >
                     <Route path="/orders" element={<OrdersPage />} />
                     <Route path="/products" element={<ProductsPage />} />
                     <Route path="/" element={<Navigate to="/orders" replace />} />
-                </Route>`
+                </Route>
             </Routes>
         </BrowserRouter>
 );

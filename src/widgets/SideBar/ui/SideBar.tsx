@@ -3,7 +3,6 @@ import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './SideBar.module.scss';
 import {memo} from "react"
 
-
 interface SideBarProps {
     className?: string;
 }

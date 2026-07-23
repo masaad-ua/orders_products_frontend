@@ -1,2 +1,14 @@
-.OrdersPage {
+.orders {
+  padding: 67px 0px 0px 122px;
+
+  &__titleIcon {
+    margin-right: 21px;
+    height: 40px;
+    width: 40px;
+  }
+  &__title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+
 }

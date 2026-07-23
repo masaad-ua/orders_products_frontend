@@ -3,5 +3,12 @@
     "TITLE": "INVENTORY",
     "INPUT_PLACEHOLDER": "Поиск",
     "SESSION_COUNTER": "Счётчик сессий"
+  },
+  "SIDEBAR": {
+    "ORDERS": "ПРИХОД",
+    "GROUPS": "ГРУППЫ",
+    "PRODUCTS": "ПРОДУКТИ",
+    "USERS": "ПОЛЬЗОВАТЕЛИ" ,
+    "SETTINGS": "НАСТРОЙКА"
   }
 }

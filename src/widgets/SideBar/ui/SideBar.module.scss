@@ -1,5 +1,62 @@
 .sidebar {
+    width: 200px;
+    height: 600px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 
+  &__avatarWrapper{
+    position: relative;
+    margin-top: 44px;
+  }
+  &__avatar{
+    width: 100px;
+    height: 100px;
 
+  }
+  &__settings{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: var(--whie);
+    position: absolute;
+    bottom: -1px;
+    right: 4px;
+  }
+  &__settingsIcon{
+    fill: var(--black);
+    width: 15px;
+    height: 15px;
+  }
+  &__list{
+    text-align: center;
+    margin-top: 56px;
+  }
+  &__list li {
+    margin-bottom: 24px;
+  }
+  &__listLink{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--black);
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    padding: 0 5px;
+  }
+  &__listLinkLine{
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -1px;
+    background: var(--green);
+    transform: scaleX(0);
+    transition: transform 300ms ease-in-out;
+  }
 
 }
+
+.active .sidebar__listLinkLine{
+  transform: scaleX(1);
+}
+

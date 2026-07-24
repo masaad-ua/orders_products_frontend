@@ -4,6 +4,9 @@ import cls from './ProductsPage.module.scss';
 import {memo, useState} from "react"
 import {ProductFilters} from "@/widgets/ProductFilters";
 import {TrashButton} from "@/shared/ui/TrashButton";
+import Monitor from '@/assets/images/monitor.png';
+import {PriceItem} from "@/shared/ui/PriceItem";
+import {DateItem} from "@/shared/ui/DateItem";
 
 interface ProductsPageProps {
     className?: string;
@@ -35,69 +38,86 @@ const ProductsPage = memo((props: ProductsPageProps) => {
                         ["d-flex", "justify-content-center" ,"align-items-center"] )}>
                         <div className={classNames(cls.products__listItemIndicator)}></div>
                     </div>
-                    <div className={classNames(cls.products__listItemDeviceWrapper)}>
-                        <img src="" alt="" className={classNames(cls.products__listItemDeviceImage)}/>
+
+
+                    <div className={classNames(cls.products__listItemDeviceWrapper,
+                        {},
+                        ["d-flex", "align-items-center"])}>
+                        <img src={Monitor}
+                             alt=""
+                             className={classNames(cls.products__listItemDeviceImage)}/>
                         <div className={classNames(cls.products__listItemNameDeviceNameWrapper)}>
                             <p>Gigabyte Technology X58-USB3 (Socket 1366) 6 X58-USB3</p>
-                            <p>SN-12.3456789</p>
+                            <p className={"color_grey font_size_14"}>SN-12.3456789</p>
                         </div>
                     </div>
 
-                    <div className={classNames(cls.products__listItemNameStatus)}>
-                        <p>Свободен</p>
-                    </div>
-                    <div className={classNames(cls.products__listItemPeriod)}>
-                        <p>
-                            <span>с</span>
-                            06 / 04/ 2017
-                        </p>
-                        <p>
-                            <span>по</span>
-                            с 06 / 04/ 2017
+                    <div
+                        className={classNames(cls.products__listItemNameStatusWrapper,
+                            {},
+                            [ "d-flex", "justify-content-center", "align-items-center"]
+                           )}>
+                        <p className={classNames(cls.products__listItemNameStatus,
+                            {
+                                [cls.free]: true
+                            })}>
+                            cвободен
                         </p>
                     </div>
 
-                    <div className={classNames(cls.products__listItemStatus)}>
+
+                    <div className={classNames(cls.products__listItemPeriodWrapper,
+                        {},
+                        ["d-flex", "flex-column", "align-items-start",  "justify-content-center"]
+
+                        )}>
+                        <p>
+                            <span className={"font_size_12"}>с</span>
+                            &nbsp;06 / 04/ 2017
+                        </p>
+                        <p>
+                            <span className={"font_size_12"}>по </span>
+                            &nbsp;06 / 04/ 2017
+                        </p>
+                    </div>
+
+                    <div className={classNames(cls.products__listItemStatus,
+                        {},
+                        ["d-flex", "justify-content-center", "align-items-center"])}>
                         <p>новый</p>
                     </div>
-                    <div className={cls.products__listItemPriceWrapper}>
-                        <div className={
-                            classNames(cls.products__listItemPrice1,
-                                {}, ["colorGreySize"])
-                        }>
-                            2500 $
-                        </div>
-                        <div className={cls.products__listItemPrice2}>
-                            2500 000.50&nbsp;
-                            <span className={cls.products__listItemPrice2Currency}>UAH</span>
-                        </div>
-                    </div>
+                    <PriceItem
+                        className={cls.products__listItemPriceWrapper}
+                    />
 
-                    <div className={cls.products__listItemTitleGroupWrapper}>
-                        <p className={cls.products__listItemTitleGroup}>
+                    <div className={classNames(cls.products__listItemTitleGroupWrapper,
+                                    {},
+                                    ["d-flex", "justify-content-start", "align-items-center"]
+                    )}>
+                        <p className={cls.listItemName}>
                             Длинное предлинное длиннючее название группы
                         </p>
                     </div>
 
-                    <div className={cls.products__listItemNameOfCustomerWrapper}>
-                        <p>Христорождественский Александр</p>
-                    </div>
-                    <div className={cls.products__listItemNameOfCustomerWrapper}>
-                        <p>Длинное предлинное длиннючее название прихода</p>
-                    </div>
-                    <div className={classNames(cls.orders__listItemDateWrapper,
+                    <div className={classNames(cls.products__listItemNameOfCustomerWrapper,
                         {},
-                        [])}>
-                        <p className={classNames(cls.orders__listItemDateFormat1,
-                            {},
-                            ["colorGreySize"])}
-                        >
-                            04/12
-                        </p>
-                        <p className={cls.orders__listItemDateFormat2}>
-                            06/ Апр /2017
+                        ["d-flex", "justify-content-start", "align-items-center"]
+                    )}>
+                        <p className={cls.listItemName}>
+                            -
                         </p>
                     </div>
+                    <div className={classNames(cls.products__listItemNameOfOrdersWrapper,
+                        {},
+                        ["d-flex", "justify-content-start", "align-items-center"]
+                    )}>
+                        <p className={cls.listItemName}>
+                            Длинное предлинное длиннючее название прихода
+                        </p>
+                    </div>
+                    <DateItem
+                        className={cls.products__listItemDateWrapper}
+                    />
                     <TrashButton/>
                 </li>
             </ul>

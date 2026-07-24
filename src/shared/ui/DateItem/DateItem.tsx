@@ -18,11 +18,11 @@ export const DateItem = memo((props: DateItemProps) => {
             [])}>
             <p className={classNames(cls.dateItem__dateFormat1,
                 {},
-                ["colorGreySize"])}
+                ["color_grey", "font_size_12"])}
             >
                 04/12
             </p>
-            <p className={cls.dateItem__ateFormat2}>
+            <p className={cls.dateItem__dateFormat2}>
                 06/ Апр /2017
             </p>
         </div>

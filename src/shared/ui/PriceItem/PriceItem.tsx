@@ -16,7 +16,7 @@ export const PriceItem = memo((props: PriceItemProps) => {
         <div className={classes}>
             <div className={
                 classNames(cls.priceItem__price1,
-                    {}, ["colorGreySize"])
+                    {}, ["color_grey", "font_size_12"])
             }>
                 2500 $
             </div>

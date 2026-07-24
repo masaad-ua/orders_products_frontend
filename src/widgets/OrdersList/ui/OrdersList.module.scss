@@ -44,22 +44,10 @@
 
   &__listItemDateWrapper{
     margin-right: 79px;
-    text-align: center;
     height: 100%;
     width: 196px;
-    padding-top: 11px;
   }
-  &__listItemDateFormat1{
-
-  }
-  &__listItemDateFormat2{
-    font-size: 16px;
-    transform: translateY(-5px);
-  }
-
   &__listItemPriceWrapper{
-    height: 100%;
-    text-align: left;
     padding-top: 11px;
   }
 
@@ -70,16 +58,5 @@
 
   &__listItemPrice2Currency{
     font-size: 12px;
-  }
-  &__listItemTrashButton{
-    height: 12px;
-    width: 12px;
-    background-image: url("/icons/trash-fill.svg");
-    background-size: contain;
-    border: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 34px;
   }
 }

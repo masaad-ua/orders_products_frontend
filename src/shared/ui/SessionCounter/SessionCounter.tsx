@@ -3,7 +3,6 @@ import {classNames} from '@/shared/lib/classNames/classNames.ts';
 import cls from './SessionCounter.module.scss';
 import {memo} from "react"
 
-
 interface SessionCounterProps {
     className?: string;
     sessions: number;

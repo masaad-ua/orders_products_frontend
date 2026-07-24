@@ -8,7 +8,7 @@ import {useTranslation} from "react-i18next";
 import {LanguagesEnum, LanguagesLocalesEnum} from "@/shared/const/languages.enum.ts";
 import {CurrentDateTime} from "@/shared/ui/CurrenDateTime";
 import {useSessions} from "@/features/sessions/model/useSessions.ts";
-import {SessionCounter} from "@/shared/ui/SessionCounter/ui/SessionCounter.tsx";
+import {SessionCounter} from "@/shared/ui/SessionCounter/SessionCounter.tsx";
 
 interface TopMenuProps {
     className?: string;

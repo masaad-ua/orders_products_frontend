@@ -3,6 +3,9 @@ import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './OrdersList.module.scss';
 import {memo} from "react"
 import {List} from "lucide-react";
+import {TrashButton} from "@/shared/ui/TrashButton/TrashButton.tsx";
+import {DateItem} from "@/shared/ui/DateItem";
+import {PriceItem} from "@/shared/ui/PriceItem";
 
 
 interface OrdersListProps {
@@ -37,33 +40,13 @@ export const OrdersList = memo((props: OrdersListProps) => {
                     </div>
                 </div>
 
-                <div className={classNames(cls.orders__listItemDateWrapper,
-                    {},
-                    [])}>
-                    <p className={classNames(cls.orders__listItemDateFormat1,
-                        {},
-                        ["colorGreySize"])}
-                    >
-                        04/12
-                    </p>
-                    <p className={cls.orders__listItemDateFormat2}>
-                        06/ Апр /2017
-                    </p>
-                </div>
-
-                <div className={cls.orders__listItemPriceWrapper}>
-                    <div className={
-                        classNames(cls.orders__listItemPrice1,
-                            {}, ["colorGreySize"])
-                    }>
-                        2500 $
-                    </div>
-                    <div className={cls.orders__listItemPrice2}>
-                        2500 000.50&nbsp;
-                        <span className={cls.orders__listItemPrice2Currency}>UAH</span>
-                    </div>
-                </div>
-                <button className={cls.orders__listItemTrashButton}></button>
+                <DateItem
+                    className={cls.orders__listItemDateWrapper}
+                />
+                <PriceItem
+                    className={cls.orders__listItemPriceWrapper}
+                />
+                <TrashButton/>
             </li>
         </ul>
     );

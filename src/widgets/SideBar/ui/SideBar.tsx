@@ -1,10 +1,10 @@
 import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './SideBar.module.scss';
-import {memo, useEffect, useState} from "react"
+import {memo} from "react"
 import portrait from '@/assets/images/portrait.png';
 import {Settings} from "lucide-react";
-import {Link, NavLink, useLocation} from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import {ROUTES} from "@/shared/const/routes.const.ts";
 
 

@@ -1,0 +1,10 @@
+.listItemName {
+  font-size: 22px;
+  line-height: 1.2;
+  text-decoration: underline;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* число разрешенных строк */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

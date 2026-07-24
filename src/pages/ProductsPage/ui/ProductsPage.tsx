@@ -7,6 +7,7 @@ import {TrashButton} from "@/shared/ui/TrashButton";
 import Monitor from '@/assets/images/monitor.png';
 import {PriceItem} from "@/shared/ui/PriceItem";
 import {DateItem} from "@/shared/ui/DateItem";
+import {ListItemName} from "@/shared/ui/ListItemName";
 
 interface ProductsPageProps {
     className?: string;
@@ -89,32 +90,16 @@ const ProductsPage = memo((props: ProductsPageProps) => {
                     <PriceItem
                         className={cls.products__listItemPriceWrapper}
                     />
+                    <ListItemName
+                        className={cls.products__listItemTitleGroupWrapper}
+                    />
 
-                    <div className={classNames(cls.products__listItemTitleGroupWrapper,
-                                    {},
-                                    ["d-flex", "justify-content-start", "align-items-center"]
-                    )}>
-                        <p className={cls.listItemName}>
-                            Длинное предлинное длиннючее название группы
-                        </p>
-                    </div>
-
-                    <div className={classNames(cls.products__listItemNameOfCustomerWrapper,
-                        {},
-                        ["d-flex", "justify-content-start", "align-items-center"]
-                    )}>
-                        <p className={cls.listItemName}>
-                            -
-                        </p>
-                    </div>
-                    <div className={classNames(cls.products__listItemNameOfOrdersWrapper,
-                        {},
-                        ["d-flex", "justify-content-start", "align-items-center"]
-                    )}>
-                        <p className={cls.listItemName}>
-                            Длинное предлинное длиннючее название прихода
-                        </p>
-                    </div>
+                    <ListItemName
+                        className={cls.products__listItemNameOfCustomerWrapper}
+                    />
+                    <ListItemName
+                        className={cls.products__listItemNameOfOrdersWrapper}
+                    />
                     <DateItem
                         className={cls.products__listItemDateWrapper}
                     />

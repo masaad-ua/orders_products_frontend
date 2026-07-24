@@ -1,0 +1,16 @@
+.productFilters {
+
+  &__label{
+    margin-right: 6px;
+    font-size: 14px;
+  }
+  &__formSelect{
+    width: 332px;
+    height: 31px;
+  }
+  &__formSelect:nth-of-type(1){
+    margin-right: 45px;
+    padding: 0px 0px 0px 10px;
+  }
+
+}

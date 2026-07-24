@@ -1,0 +1,11 @@
+.trashButton{
+  height: 12px;
+  width: 12px;
+  background-image: url("/icons/trash-fill.svg");
+  background-size: contain;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 34px;
+}

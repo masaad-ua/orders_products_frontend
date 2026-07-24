@@ -1,0 +1,15 @@
+.priceItem{
+  height: 100%;
+  text-align: left;
+
+  &__price2{
+    font-size: 16px;
+    transform: translateY(-5px);
+  }
+
+  &__price2Currency{
+    font-size: 12px;
+  }
+}
+
+

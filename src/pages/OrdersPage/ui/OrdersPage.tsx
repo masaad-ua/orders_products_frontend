@@ -3,8 +3,9 @@ import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './OrdersPage.module.scss';
 import {memo} from "react"
 import Circle from '@/assets/images/circle_plus.png';
-import {List, Trash2} from "lucide-react";
 import {OrdersList} from "@/widgets/OrdersList";
+import type {OrderI} from "@/features/orders/model/types/order.i.ts";
+import {useGetOrdersQuery} from "@/features/orders/api/ordersApi.ts";
 
 
 interface OrdersPageProps {
@@ -14,6 +15,19 @@ interface OrdersPageProps {
 const OrdersPage = memo((props: OrdersPageProps) => {
     const {className} = props;
     const {t} = useTranslation();
+    const {
+        data: orders= [],
+        isLoading,
+        isError
+    } = useGetOrdersQuery();
+
+    if(isLoading){
+        return <div>Загрузка...</div>
+    }
+
+    if (isError) {
+        return <div>Ошибка загрузки заказов</div>;
+    }
 
     return (
         <div className={classNames(cls.orders, {}, [className])}>
@@ -22,11 +36,13 @@ const OrdersPage = memo((props: OrdersPageProps) => {
                     <img
                         className={cls.orders__titleIcon}
                         src={Circle} alt=""/>
-                    <h2 className={cls.orders__title}>
-                        Приходы&nbsp;/&nbsp;25
+                    <h2 className={classNames(cls.orders__title, {}, ["h2"])}>
+                        Приходы&nbsp;/&nbsp;{orders.length}
                     </h2>
                 </div>
-                <OrdersList/>
+                <OrdersList
+                    orders={orders}
+                />
             </div>
         </div>
     );

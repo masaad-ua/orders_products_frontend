@@ -23,7 +23,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     return (
         <div className={classNames(cls.products, {}, [className])}>
             <div className={classNames(cls.products__formWrapper, {}, ["d-flex"])}>
-                <h2 className={classNames( cls.products__title, {},["h2Title"])}>
+                <h2 className={classNames( cls.products__title, {},["h2"])}>
                     Продукты&nbsp;/&nbsp;25
                 </h2>
                 <ProductFilters

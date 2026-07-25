@@ -7,7 +7,6 @@ import {Settings} from "lucide-react";
 import { NavLink} from "react-router-dom";
 import {ROUTES} from "@/shared/const/routes.const.ts";
 
-
 interface SideBarProps {
     className?: string;
 }

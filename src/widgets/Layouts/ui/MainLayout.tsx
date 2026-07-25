@@ -7,7 +7,7 @@ export function MainLayout() {
     return (
         <>
             <TopMenu />
-            <div className={"d-flex justify-content-start"}>
+            <div className={"d-flex justify-content-between"}>
                 <SideBar/>
                 <main className={"flex-grow-1"}>
                     <Outlet />

@@ -1,0 +1,64 @@
+.products {
+  &__listItem{
+    height: 70px;
+    width: 2542px;
+    background: var(--white);
+    border: solid var(--dark_grey) 1px;
+    position: relative;
+  }
+
+  &__listItemIndicatorWrapper{
+    height: inherit;
+    width: 77px;
+
+  }
+  &__listItemIndicator{
+    height: 10px;
+    width: 10px;
+    background: var(--black);
+    border-radius: 50%;
+  }
+  &__listItemDeviceWrapper{
+    width: 540px;
+
+  }
+  &__listItemDeviceImage{
+    height: 33px;
+    width: 44px;
+    margin-right: 34px;
+  }
+  &__listItemNameStatusWrapper{
+    width: 110px;
+  }
+  &__listItemNameStatus.free{
+    color: var(--green);
+  }
+  &__listItemPeriodWrapper{
+    width: 190px;
+    padding-left: 34px;
+  }
+  &__listItemPeriodWrapper span {
+    display: inline-block;
+    width: 17px;
+  }
+  &__listItemStatus{
+    width: 89px;
+  }
+  &__listItemPriceWrapper{
+    padding-left: 63px;
+    padding-top: 10px;
+    width: 225px;
+  }
+  &__listItemTitleGroupWrapper{
+    width: 416px;
+  }
+  &__listItemNameOfCustomerWrapper{
+    width: 298px;
+  }
+  &__listItemNameOfOrdersWrapper{
+    width: 370px;
+  }
+  &__listItemDateWrapper{
+    width: 180px;
+  }
+}

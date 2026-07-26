@@ -1,6 +1,9 @@
 .orders {
   &__list{
     margin-top: 60px;
+    height: 405px;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   &__listItem{
@@ -12,6 +15,10 @@
     position: relative;
     margin-bottom: 12px;
   }
+
+  //&__listItem:last-of-type{
+  //  margin-bottom: 0px;
+  //}
 
   &__listItemTitle{
     font-size: 21px;

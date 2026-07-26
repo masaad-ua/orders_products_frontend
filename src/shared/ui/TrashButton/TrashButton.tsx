@@ -2,6 +2,7 @@ import cls from './TrashButton.module.scss';
 
 interface TrashButtonProps {
     className?: string;
+    deleteItem?: () => void
 }
 
 export const TrashButton = (props: TrashButtonProps) => {

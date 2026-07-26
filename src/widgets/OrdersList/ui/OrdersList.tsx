@@ -12,18 +12,26 @@ import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 interface OrdersListProps {
     className?: string;
     orders: OrderI[];
+    handleScroll: (e: React.UIEvent<HTMLUListElement>) => void
 }
 
 export const OrdersList = memo((props: OrdersListProps) => {
-    const {className, orders} = props;
+    const {className, orders, handleScroll} = props;
     const {t} = useTranslation();
+    const onScroll = (e: React.UIEvent<HTMLUListElement>) =>{
+        handleScroll(e);
+    }
 
     return (
-        <ul className={cls.orders__list}>
-
+        <ul className={cls.orders__list}
+            onScroll={onScroll}
+        >
             {
-                orders.map((order) => (
-                    <li className={classNames(cls.orders__listItem, {}, ["d-flex", "align-items-center"])}>
+                orders.map((order, index) => (
+                    <li
+                        key={order.id}
+                        className={classNames(cls.orders__listItem, {}, ["d-flex", "align-items-center"])}
+                    >
                         <p
                             className={classNames(cls.orders__listItemTitle,
                                 {}, ["d-flex align-items-center"])}>

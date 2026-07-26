@@ -7,7 +7,6 @@ import {OrdersList} from "@/widgets/OrdersList";
 import {useGetOrdersQuery} from "@/features/orders/api/ordersApi.ts";
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 
-
 interface OrdersPageProps {
     className?: string;
 }

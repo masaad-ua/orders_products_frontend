@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {tokenStorage} from "@/shared/lib/tokenStorage/tokenStorage.ts";
-import type {ProductI} from "@/features/products/model/types/product.i.ts";
+import type {ProductI, ProductsResponse} from "@/features/products/model/types/product.i.ts";
 
 export const productsApi = createApi({
     reducerPath: "productsApi",
@@ -17,8 +17,17 @@ export const productsApi = createApi({
     }),
     tagTypes: ["Products"],
     endpoints:(builder)=>({
-        getProducts: builder.query<ProductI[], void>({
-            query: () => '/products',
+        getProducts: builder.query<
+            ProductsResponse,
+            { page: number; limit: number }
+        >({
+            query: ({ page, limit }) => ({
+                url: '/products',
+                params: {
+                    page,
+                    limit,
+                },
+            }),
             providesTags: ['Products'],
         }),
 

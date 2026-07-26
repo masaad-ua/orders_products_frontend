@@ -1,3 +1,5 @@
+import type {OrderI} from "@/features/orders/model/types/order.i.ts";
+
 export interface ProductGuaranteeI {
     start: string,
     end: string,
@@ -25,4 +27,16 @@ export interface ProductI {
     date: string,
     dateTo: string,
     dateFrom: string
+}
+
+export interface ProductsResponse {
+    data: ProductI[];
+    amountOrders: number;
+    pagination: {
+        page: number;
+        limit: number;
+        total: number;
+        totalPages: number;
+        hasNextPage: boolean;
+    };
 }

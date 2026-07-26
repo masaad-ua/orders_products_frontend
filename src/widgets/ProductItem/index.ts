@@ -1,1 +1,1 @@
-export {ProductItem} from "@/widgets/ProductItem/ui/ProductItem.tsx";
+export {ProductItem} from "./ui/ProductItem.tsx";

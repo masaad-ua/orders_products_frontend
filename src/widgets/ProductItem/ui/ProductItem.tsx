@@ -1,7 +1,7 @@
 import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ProductItem.module.scss';
-import {memo} from "react"
+import {memo, useState} from "react"
 import Monitor from "@/assets/images/monitor.png";
 import {PriceItem} from "@/shared/ui/PriceItem";
 import {ListItemName} from "@/shared/ui/ListItemName";
@@ -9,6 +9,7 @@ import {DateItem} from "@/shared/ui/DateItem";
 import {TrashButton} from "@/shared/ui/TrashButton";
 import type {ProductI} from "@/features/products/model/types/product.i.ts";
 import {getDateFormat} from "@/shared/services/dateService.ts";
+import {useGetProductsQuery} from "@/features/products/api/productsApi.ts";
 
 
 interface ProductItemProps {
@@ -31,7 +32,6 @@ export const ProductItem = memo((props: ProductItemProps) => {
         monthInDigit:monthInDigitEnd,
         year: yearEnd
     } = getDateFormat(dateEnd);
-
 
     return (
         <li className={classNames(cls.products__listItem,{}, ["d-flex"])}>

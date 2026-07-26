@@ -7,6 +7,7 @@ import {TrashButton} from "@/shared/ui/TrashButton/TrashButton.tsx";
 import {DateItem} from "@/shared/ui/DateItem";
 import {PriceItem} from "@/shared/ui/PriceItem";
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
+import {OrderItem} from "@/widgets/OrderItem";
 
 
 interface OrdersListProps {
@@ -27,41 +28,11 @@ export const OrdersList = memo((props: OrdersListProps) => {
             onScroll={onScroll}
         >
             {
-                orders.map((order, index) => (
-                    <li
-                        key={order.id}
-                        className={classNames(cls.orders__listItem, {}, ["d-flex", "align-items-center"])}
-                    >
-                        <p
-                            className={classNames(cls.orders__listItemTitle,
-                                {}, ["d-flex align-items-center"])}>
-                            {order.title}
-                        </p>
-                        <div className={classNames(cls.orders__listItemAmountProductWrapper,
-                            {},
-                            ["d-flex", "align-items-center"])}>
-                            <button className={cls.orders__listItemAmountProductButton}>
-                                <List/>
-                            </button>
-                            <div>
-                                <p className={cls.orders__listItemAmountProduct}>
-                                    23
-                                </p>
-                                <p className={cls.orders__listItemAmountProductSignature}>
-                                    Продукта
-                                </p>
-                            </div>
-                        </div>
+                orders.map((order) => (
+                    <OrderItem
+                        order ={order}
+                    />
 
-                        <DateItem
-                            className={cls.orders__listItemDateWrapper}
-                            dateItem={order.date}
-                        />
-                        <PriceItem
-                            className={cls.orders__listItemPriceWrapper}
-                        />
-                        <TrashButton/>
-                    </li>
                 ))
             }
 

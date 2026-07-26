@@ -4,7 +4,6 @@ import cls from './OrdersPage.module.scss';
 import {memo} from "react"
 import Circle from '@/assets/images/circle_plus.png';
 import {OrdersList} from "@/widgets/OrdersList";
-import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 import {useGetOrdersQuery} from "@/features/orders/api/ordersApi.ts";
 
 

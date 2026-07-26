@@ -3,12 +3,8 @@ import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ProductsPage.module.scss';
 import {memo, useState} from "react"
 import {ProductFilters} from "@/widgets/ProductFilters";
-import {TrashButton} from "@/shared/ui/TrashButton";
-import Monitor from '@/assets/images/monitor.png';
-import {PriceItem} from "@/shared/ui/PriceItem";
-import {DateItem} from "@/shared/ui/DateItem";
-import {ListItemName} from "@/shared/ui/ListItemName";
 import {ProductsList} from "@/widgets/ProductsList";
+import {useGetProductsQuery} from "@/features/products/api/productsApi.ts";
 
 interface ProductsPageProps {
     className?: string;
@@ -19,6 +15,20 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     const {t} = useTranslation();
     const [type, setType] = useState('');
     const [specification, setSpecification] = useState('');
+
+    const {
+        data: products= [],
+        isLoading,
+        isError
+    } = useGetProductsQuery();
+
+    if(isLoading){
+        return <div>Загрузка...</div>
+    }
+
+    if (isError) {
+        return <div>Ошибка загрузки продуктов</div>;
+    }
 
     return (
         <div className={classNames(cls.products, {}, [className])}>
@@ -33,7 +43,9 @@ const ProductsPage = memo((props: ProductsPageProps) => {
                     onSpecificationChange={setSpecification}
                 />
             </div>
-            <ProductsList/>
+            <ProductsList
+                products={products}
+            />
         </div>
     )
 });

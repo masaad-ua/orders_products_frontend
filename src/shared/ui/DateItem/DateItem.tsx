@@ -1,6 +1,13 @@
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './DateItem.module.scss';
 import {memo} from "react"
+import {
+    getDateFormat,
+    getDay,
+    getMonthInDigit,
+    getMonthInString,
+    getYear
+} from "@/shared/services/dateService.ts";
 
 interface DateItemProps {
     className?: string;
@@ -9,33 +16,14 @@ interface DateItemProps {
 
 export const DateItem = memo((props: DateItemProps) => {
     const {className, dateItem} = props;
-    const classes = `${cls.dateItem} + ${className}`;
-    const date = new Date(dateItem);
-    const months = [
-        'Янв',
-        'Фев',
-        'Мар',
-        'Апр',
-        'Май',
-        'Июн',
-        'Июл',
-        'Авг',
-        'Сен',
-        'Окт',
-        'Ноя',
-        'Дек',
-    ];
-
-    const day = date.toLocaleDateString("en-GB", {
-        day: "2-digit",
-    })
-    const monthInDigit = date.toLocaleDateString("en-GB", {
-        month: "2-digit",
-    });
-    const monthInString: string = months[date.getMonth()]
-    const year = date.toLocaleDateString("en-GB", {
-        year: "numeric",
-    })
+    const classes: string = `${cls.dateItem} + ${className}`;
+    const date: Date = new Date(dateItem);
+    const {
+        day,
+        monthInDigit,
+        monthInString,
+        year
+    } = getDateFormat(date);
 
     return (
         <div className={classNames(classes,

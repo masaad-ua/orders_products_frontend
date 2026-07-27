@@ -5,11 +5,15 @@ import {memo} from "react"
 
 interface PriceItemProps {
     className?: string;
+    priceUAH: number,
+    priceUSD: number
 }
 
 export const PriceItem = memo((props: PriceItemProps) => {
-    const {className} = props;
-    const {t} = useTranslation();
+    const {className,
+        priceUAH,
+        priceUSD
+    } = props;
     const classes = `${cls.priceItem} + ${className}`;
 
     return (
@@ -18,10 +22,10 @@ export const PriceItem = memo((props: PriceItemProps) => {
                 classNames(cls.priceItem__price1,
                     {}, ["color_grey", "font_size_12"])
             }>
-                2500 $
+                {priceUSD} $
             </div>
             <div className={cls.priceItem__price2}>
-                2500 000.50&nbsp;
+                {priceUAH}&nbsp;
                 <span className={cls.orders__listItemPrice2Currency}>UAH</span>
             </div>
         </div>

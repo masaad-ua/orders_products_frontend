@@ -3,15 +3,18 @@ import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 
 interface TrashButtonProps {
     className?: string;
-    order: OrderI,
+    order?: OrderI,
     onDelete?: (order: OrderI) => void;
 }
 
 export const TrashButton = (props: TrashButtonProps) => {
-    const {className, onDelete, order} = props;
+    const { onDelete, order} = props;
 
     const deleteItem = () =>{
-        if(onDelete){
+        if (!order || !onDelete) {
+            return
+        }
+        else {
             onDelete(order)
         }
     }

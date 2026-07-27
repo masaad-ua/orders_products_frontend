@@ -37,7 +37,7 @@ export const OrderItem = memo((props: OrderItemProps) => {
                 </button>
                 <div>
                     <p className={cls.orders__listItemAmountProduct}>
-                        23
+                        {order.productsCount}
                     </p>
                     <p className={cls.orders__listItemAmountProductSignature}>
                         {t("ORDERS_PAGE.PRODUCTS")}
@@ -49,6 +49,8 @@ export const OrderItem = memo((props: OrderItemProps) => {
                 dateItem={order.date}
             />
             <PriceItem
+                priceUAH={order.totalUAH}
+                priceUSD={order.totalUSD}
                 className={cls.orders__listItemPriceWrapper}
             />
             {children}

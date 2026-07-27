@@ -8,14 +8,14 @@ import {PriceItem} from "@/shared/ui/PriceItem";
 import {TrashButton} from "@/shared/ui/TrashButton";
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 
-
 interface OrderItemProps {
     className?: string;
     order: OrderI;
+    children: any;
 }
 
 export const OrderItem = memo((props: OrderItemProps) => {
-    const {className, order} = props;
+    const {className, order, children} = props;
     const {t} = useTranslation();
 
     return (
@@ -52,7 +52,7 @@ export const OrderItem = memo((props: OrderItemProps) => {
             <PriceItem
                 className={cls.orders__listItemPriceWrapper}
             />
-            <TrashButton/>
+            {children}
         </li>
     );
 });

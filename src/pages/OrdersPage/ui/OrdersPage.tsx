@@ -4,8 +4,9 @@ import cls from './OrdersPage.module.scss';
 import {memo, useEffect, useState} from "react"
 import Circle from '@/assets/images/circle_plus.png';
 import {OrdersList} from "@/widgets/OrdersList";
-import {useGetOrdersQuery} from "@/features/orders/api/ordersApi.ts";
+import {useDeleteOrderMutation, useGetOrdersQuery} from "@/features/orders/api/ordersApi.ts";
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
+import {DeleteOrderModal} from "@/features/orders/ui";
 
 interface OrdersPageProps {
     className?: string;
@@ -14,9 +15,14 @@ interface OrdersPageProps {
 const OrdersPage = memo((props: OrdersPageProps) => {
     const {className} = props;
     const {t} = useTranslation();
+    const [deleteOrder] = useDeleteOrderMutation();
     const [page, setPage] = useState(1);
     const [orders, setOrders] = useState<OrderI[]>([]);
     const [isLoadingNextPage, setIsLoadingNextPage] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState<OrderI | null>(null);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+    /** Todo make common hook */
     const {
         data: response,
         isLoading,
@@ -59,6 +65,28 @@ const OrdersPage = memo((props: OrdersPageProps) => {
         });
         setIsLoadingNextPage(false);
     }, [response]);
+    /** Todo make common hook */
+
+    const handleDeleteClick = async (order: OrderI) => {
+        setSelectedOrder(order);
+        setIsDeleteModalOpen(true);
+    };
+
+    const handleDeleteOrder = async () => {
+        if (!selectedOrder) {
+            return;
+        }
+
+        try {
+            await deleteOrder(selectedOrder.id).unwrap();
+            setOrders((prev) => prev.filter((order) => order.id !== selectedOrder.id));
+
+            setIsDeleteModalOpen(false);
+            setSelectedOrder(null);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     if(isLoading && page === 1){
         return <div>Загрузка...</div>
@@ -82,6 +110,7 @@ const OrdersPage = memo((props: OrdersPageProps) => {
                 <OrdersList
                     orders={orders}
                     handleScroll={handleScroll}
+                    onDelete={handleDeleteClick}
                 />
                 {isLoading && page > 1 && (
                     <div className="text-center p-3">
@@ -89,7 +118,14 @@ const OrdersPage = memo((props: OrdersPageProps) => {
                     </div>
                 )}
             </div>
+            <DeleteOrderModal
+                isOpen={isDeleteModalOpen}
+                order={selectedOrder}
+                onClose={() => setIsDeleteModalOpen(false)}
+                onConfirm={handleDeleteOrder}
+            />
         </div>
+
     );
 });
 

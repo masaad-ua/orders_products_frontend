@@ -1,0 +1,113 @@
+.deleteOrderModal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(53, 69, 79, .65);
+  }
+
+  &__content {
+    position: absolute;
+    top: 191px;
+    left: 446px;
+    width: 790px;
+    border-radius: 4px;
+    background: var(--white);
+    z-index: 1;
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &__body {
+    padding-top: 27px;
+    padding-left: 38px;
+    height: 152px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 21px;
+    font-weight: 700;
+  }
+
+  &__productStatus {
+    width: 10px;
+    height: 10px;
+    margin-right: 34px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  &__productImage {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 30px;
+  }
+
+  &__productInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__productTitle {
+    margin-bottom: 8px;
+    font-size: 20px;
+  }
+
+  &__productSerial {
+    color: var(--grey);
+    font-size: 22px;
+    text-decoration: underline;
+  }
+
+  &__footer {
+    height: 110px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 40px;
+    background: var(--green);
+  }
+
+  &__cancelButton {
+    margin-right: 30px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 12px;
+  }
+
+  &__deleteButton {
+    width: 176px;
+    height: 54px;
+    gap: 10px;
+    border: none;
+    border-radius: 27px;
+    background: white;
+    color: #ef4455;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+}

@@ -1,12 +1,16 @@
-import {useTranslation} from 'react-i18next';
-import {classNames} from '@/shared/lib/classNames/classNames';
-import cls from './OrdersPage.module.scss';
-import {memo, useEffect, useState} from "react"
-import Circle from '@/assets/images/circle_plus.png';
+import {memo, useState} from "react";
+import {useTranslation} from "react-i18next";
+
+import {classNames} from "@/shared/lib/classNames/classNames";
+import cls from "./OrdersPage.module.scss";
+
+import Circle from "@/assets/images/circle_plus.png";
+
 import {OrdersList} from "@/widgets/OrdersList";
-import {useDeleteOrderMutation, useGetOrdersQuery} from "@/features/orders/api/ordersApi.ts";
-import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 import {DeleteOrderModal} from "@/features/orders/ui";
+import {useDeleteOrderMutation, useGetOrdersQuery} from "@/features/orders/api/ordersApi";
+import type {OrderI} from "@/features/orders/model/types/order.i";
+import {useInfiniteScroll} from "@/shared/lib/hooks/useInfiniteScroll.ts";
 
 interface OrdersPageProps {
     className?: string;
@@ -17,12 +21,7 @@ const OrdersPage = memo((props: OrdersPageProps) => {
     const {t} = useTranslation();
     const [deleteOrder] = useDeleteOrderMutation();
     const [page, setPage] = useState(1);
-    const [orders, setOrders] = useState<OrderI[]>([]);
-    const [isLoadingNextPage, setIsLoadingNextPage] = useState(false);
-    const [selectedOrder, setSelectedOrder] = useState<OrderI | null>(null);
-    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-    /** Todo make common hook */
     const {
         data: response,
         isLoading,
@@ -32,42 +31,21 @@ const OrdersPage = memo((props: OrdersPageProps) => {
         limit: 5,
     });
 
-    const handleScroll = (e: React.UIEvent<HTMLUListElement>) =>{
-        const el = e.currentTarget;
+    const {
+        items: orders,
+        setItems: setOrders,
+        handleScroll,
+    } = useInfiniteScroll<OrderI>({
+        page,
+        setPage,
+        response,
+        isLoading,
+    });
 
-        const isBottom =
-            el.scrollTop + el.clientHeight >= el.scrollHeight - 100;
+    const [selectedOrder, setSelectedOrder] = useState<OrderI | null>(null);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-        if (
-            isBottom &&
-            !isLoading &&
-            !isLoadingNextPage &&
-            response?.pagination.hasNextPage
-        ) {
-            setIsLoadingNextPage(true);
-            setPage((prev) => prev + 1);
-        }
-    }
-    useEffect(() => {
-        console.log(response);
-        if (!response) {
-            return;
-        }
-
-        setOrders((prev) => {
-            const ids = new Set(prev.map((item) => item.id));
-
-            const newOrders = response.data.filter(
-                (item) => !ids.has(item.id),
-            );
-
-            return [...prev, ...newOrders];
-        });
-        setIsLoadingNextPage(false);
-    }, [response]);
-    /** Todo make common hook */
-
-    const handleDeleteClick = async (order: OrderI) => {
+    const handleDeleteClick = (order: OrderI) => {
         setSelectedOrder(order);
         setIsDeleteModalOpen(true);
     };
@@ -79,7 +57,10 @@ const OrdersPage = memo((props: OrdersPageProps) => {
 
         try {
             await deleteOrder(selectedOrder.id).unwrap();
-            setOrders((prev) => prev.filter((order) => order.id !== selectedOrder.id));
+
+            setOrders((prev) =>
+                prev.filter((order) => order.id !== selectedOrder.id),
+            );
 
             setIsDeleteModalOpen(false);
             setSelectedOrder(null);
@@ -88,8 +69,8 @@ const OrdersPage = memo((props: OrdersPageProps) => {
         }
     };
 
-    if(isLoading && page === 1){
-        return <div>Загрузка...</div>
+    if (isLoading && page === 1) {
+        return <div>Загрузка...</div>;
     }
 
     if (isError) {
@@ -98,26 +79,33 @@ const OrdersPage = memo((props: OrdersPageProps) => {
 
     return (
         <div className={classNames(cls.orders, {}, [className])}>
-            <div className={classNames(cls.orders__titleWrapper, {}, )}>
-                <div className={"d-flex"}>
+            <div className={cls.orders__titleWrapper}>
+                <div className="d-flex">
                     <img
                         className={cls.orders__titleIcon}
-                        src={Circle} alt=""/>
+                        src={Circle}
+                        alt=""
+                    />
+
                     <h2 className={classNames(cls.orders__title, {}, ["h2"])}>
-                        Приходы&nbsp;/&nbsp;{response?.pagination.total ?? orders.length}
+                        Приходы&nbsp;/&nbsp;
+                        {response?.pagination.total ?? orders.length}
                     </h2>
                 </div>
+
                 <OrdersList
                     orders={orders}
                     handleScroll={handleScroll}
                     onDelete={handleDeleteClick}
                 />
+
                 {isLoading && page > 1 && (
                     <div className="text-center p-3">
                         Загрузка...
                     </div>
                 )}
             </div>
+
             <DeleteOrderModal
                 isOpen={isDeleteModalOpen}
                 order={selectedOrder}
@@ -125,8 +113,7 @@ const OrdersPage = memo((props: OrdersPageProps) => {
                 onConfirm={handleDeleteOrder}
             />
         </div>
-
     );
 });
 
-export default OrdersPage
+export default OrdersPage;

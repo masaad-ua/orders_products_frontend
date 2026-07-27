@@ -34,7 +34,9 @@ export const ProductItem = memo((props: ProductItemProps) => {
     } = getDateFormat(dateEnd);
 
     return (
-        <li className={classNames(cls.products__listItem,{}, ["d-flex"])}>
+        <li
+            key={product.id}
+            className={classNames(cls.products__listItem,{}, ["d-flex"])}>
             <div className={classNames(cls.products__listItemIndicatorWrapper,
                 {},
                 ["d-flex", "justify-content-center" ,"align-items-center"] )}>

@@ -5,7 +5,6 @@ import {memo} from "react"
 import {List} from "lucide-react";
 import {DateItem} from "@/shared/ui/DateItem";
 import {PriceItem} from "@/shared/ui/PriceItem";
-import {TrashButton} from "@/shared/ui/TrashButton";
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 
 interface OrderItemProps {
@@ -15,7 +14,7 @@ interface OrderItemProps {
 }
 
 export const OrderItem = memo((props: OrderItemProps) => {
-    const {className, order, children} = props;
+    const {order, children} = props;
     const {t} = useTranslation();
 
     return (
@@ -41,7 +40,7 @@ export const OrderItem = memo((props: OrderItemProps) => {
                         23
                     </p>
                     <p className={cls.orders__listItemAmountProductSignature}>
-                        Продукта
+                        {t("ORDERS_PAGE.PRODUCTS")}
                     </p>
                 </div>
             </div>

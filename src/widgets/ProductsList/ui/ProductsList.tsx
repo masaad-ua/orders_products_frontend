@@ -1,10 +1,9 @@
 import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ProductsList.module.scss';
-import {memo, useEffect, useState} from "react"
+import {memo} from "react"
 import type {ProductI} from "@/features/products/model/types/product.i.ts";
 import {ProductItem} from "@/widgets/ProductItem";
-import {useGetProductsQuery} from "@/features/products/api/productsApi.ts";
 
 interface ProductsListProps {
     className?: string;
@@ -13,9 +12,7 @@ interface ProductsListProps {
 }
 
 export const ProductsList = memo((props: ProductsListProps) => {
-    const {className, products, handleScroll} = props;
-    const {t} = useTranslation();
-
+    const { products, handleScroll} = props;
     const onScroll = (e: React.UIEvent<HTMLUListElement>) =>{
         handleScroll(e);
     }

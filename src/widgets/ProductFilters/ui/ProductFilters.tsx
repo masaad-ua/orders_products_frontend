@@ -4,23 +4,20 @@ import cls from './ProductFilters.module.scss';
 import {memo} from "react"
 import {OptionsSpecificationEnum, OptionsTypeEnum} from "@/shared/const/options.enum.ts";
 
-
-
-interface ProductsFiltersProps {
+interface ProductFiltersProps {
     type: string;
-    specification: string;
+    specification?: string;
     onTypeChange: (value: string) => void;
-    onSpecificationChange: (value: string) => void;
+    onSpecificationChange?: (value: string) => void;
 }
 
 export const ProductFilters = memo((props: ProductFiltersProps) => {
     const {
-        className,
         type,
-        specification,
-        onTypeChange,
-        onSpecificationChange} = props;
+        onTypeChange
+    } = props;
     const {t} = useTranslation();
+
 
     return (
         <div className={classNames(cls.productFilters, {},["d-flex", "align-items-center"])}>
@@ -31,9 +28,12 @@ export const ProductFilters = memo((props: ProductFiltersProps) => {
             <div >
                 <select className={classNames(cls.productFilters__formSelect)}
                         value={type}
-                        onChange={(e) => onTypeChange(e.target.value)}>
+                        onChange={(e) => {
+                            console.log("e.target.value", e.target.value);
+                            onTypeChange(e.target.value)
+                        }}>
                     <option value={OptionsTypeEnum.ALL}>All</option>
-                    <option value={OptionsTypeEnum.MONITOR}>Monitors</option>
+                    <option value={OptionsTypeEnum.MONITOR}>Monitor</option>
                     <option value={OptionsTypeEnum.KEYBOARD}>Keyboard</option>
                     <option value={OptionsTypeEnum.LAPTOP}>Laptop</option>
                     <option value={OptionsTypeEnum.PRINTER}>Printer</option>
@@ -45,9 +45,7 @@ export const ProductFilters = memo((props: ProductFiltersProps) => {
             </div>
 
             <div >
-                <select className={classNames(cls.productFilters__formSelect)}
-                        value={specification}
-                        onChange={(e) => onSpecificationChange(e.target.value)}>
+                <select className={classNames(cls.productFilters__formSelect)}>
                     <option value={OptionsSpecificationEnum.ALL}>All</option>
                     <option value={OptionsSpecificationEnum.NEW}>New</option>
                     <option value={OptionsSpecificationEnum.USED}>Used</option>

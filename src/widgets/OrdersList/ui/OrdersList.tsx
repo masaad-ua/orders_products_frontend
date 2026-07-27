@@ -1,4 +1,3 @@
-import {useTranslation} from 'react-i18next';
 import cls from './OrdersList.module.scss';
 import {memo} from "react"
 import {TrashButton} from "@/shared/ui/TrashButton/TrashButton.tsx";
@@ -13,8 +12,7 @@ interface OrdersListProps {
 }
 
 export const OrdersList = memo((props: OrdersListProps) => {
-    const {className, orders, handleScroll, onDelete } = props;
-    const {t} = useTranslation();
+    const { orders, handleScroll, onDelete } = props;
     const onScroll = (e: React.UIEvent<HTMLUListElement>) =>{
         handleScroll(e);
     }
@@ -35,7 +33,6 @@ export const OrdersList = memo((props: OrdersListProps) => {
                     </OrderItem>
                 ))
             }
-
         </ul>
     );
 });

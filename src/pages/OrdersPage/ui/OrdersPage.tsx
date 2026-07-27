@@ -70,11 +70,11 @@ const OrdersPage = memo((props: OrdersPageProps) => {
     };
 
     if (isLoading && page === 1) {
-        return <div>Загрузка...</div>;
+        return <div>{t("DOWNLOADS")}</div>
     }
 
     if (isError) {
-        return <div>Ошибка загрузки заказов</div>;
+        return <div>{t("ERRORS.ORDERS_PAGE.ERRORS_DOWNLOAD_ORDERS")}</div>
     }
 
     return (

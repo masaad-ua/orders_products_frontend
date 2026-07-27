@@ -6,9 +6,9 @@ export enum OptionsSpecificationEnum {
 }
 
 export enum OptionsTypeEnum {
-    ALL="all",
-    MONITOR = "new",
-    KEYBOARD ="used",
-    LAPTOP ="repair",
-    PRINTER = "printer"
+    ALL="All",
+    MONITOR = "Monitor",
+    KEYBOARD ="Keyboard",
+    LAPTOP ="Laptop",
+    PRINTER = "Printer"
 }

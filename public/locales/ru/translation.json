@@ -12,9 +12,19 @@
     "SETTINGS": "НАСТРОЙКА"
   },
   "ORDERS_PAGE": {
-
+    "PRODUCTS": "Продукта"
   },
-  "PRODUCTS_PAGE": {
 
-  }
+  "PRODUCTS_PAGE": {
+    "PRODUCTS_PAGE_TITLE": "Продукты"
+  },
+  "ERRORS": {
+    "ORDERS_PAGE": {
+      "ERRORS_DOWNLOAD_ORDERS": "Ошибка загрузки заказов..."
+    },
+    "PRODUCTS_PAGE": {
+      "ERRORS_DOWNLOAD_PRODUCTS": "Ошибка загрузки продуктов..."
+    }
+  },
+  "DOWNLOADS": "Загрузка"
 }

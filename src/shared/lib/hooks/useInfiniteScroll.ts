@@ -16,9 +16,7 @@ interface UseInfiniteScrollProps<T extends { id: number | string }> {
     isLoading: boolean;
 }
 
-export const useInfiniteScroll = <
-    T extends { id: number | string },
->({
+export const useInfiniteScroll = <T extends { id: number | string } >({
    setPage,
    response,
    isLoading,
@@ -50,11 +48,9 @@ export const useInfiniteScroll = <
 
         setItems((prev) => {
             const ids = new Set(prev.map((item) => item.id));
-
             const newItems = response.data.filter(
                 (item) => !ids.has(item.id),
             );
-
             return [...prev, ...newItems];
         });
 

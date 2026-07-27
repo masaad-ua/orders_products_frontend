@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react'
 import path from "path";
 import legacy from '@vitejs/plugin-legacy'
@@ -9,6 +9,11 @@ export default defineConfig({
     react(),
     legacy()
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

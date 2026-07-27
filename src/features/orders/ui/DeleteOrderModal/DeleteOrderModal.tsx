@@ -1,8 +1,9 @@
-import { X, Trash2 } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 
 import cls from './DeleteOrderModal.module.scss';
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 import {classNames} from "@/shared/lib/classNames/classNames.ts";
+import {CloseButton} from "@/shared/ui/CloseButton";
 
 interface DeleteOrderModalProps {
     isOpen: boolean;
@@ -28,14 +29,10 @@ export const DeleteOrderModal = ({
 
             <div className={classNames(cls.deleteOrderModal__content, {},
                 ["d-flex", "flex-column" ])}>
-                <button
-                    className={classNames(cls.deleteOrderModal__closeButton, {}, [
-                        "d-flex", "justify-content-center", "align-items-center"
-                    ])}
-                    onClick={onClose}
-                >
-                    <X size={22} />
-                </button>
+                <CloseButton
+                    onClose={onClose}
+                />
+
                 <div className={cls.deleteOrderModal__body}>
                     <h3 className={cls.deleteOrderModal__title}>
                         Вы уверены, что хотите удалить этот приход?

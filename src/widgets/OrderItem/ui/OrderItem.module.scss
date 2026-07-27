@@ -7,6 +7,12 @@
     padding-left: 36px;
     position: relative;
     margin-bottom: 12px;
+    cursor: pointer;
+    transition: box-shadow 300ms ease-in-out;
+  }
+
+  &__listItem:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   }
 
   &__listItemTitle{
@@ -17,7 +23,6 @@
   }
 
   &__listItemAmountProductWrapper{
-    /* margin-right: 73px; */
     width: 154px;
   }
   &__listItemAmountProductButton{

@@ -1,10 +1,13 @@
 .orderDetails {
-  height: 460px;
-  width: 952px;
+
   position: relative;
   border: solid 1px var(--grey-middle);
   background: var(--white);
   border-radius: 5px;
+
+  width: 0px;
+  overflow: hidden;
+  transition: width 300ms ease-in-out 50ms;
 
   &__closeButton{
     top: -20px;
@@ -14,6 +17,7 @@
   &__titleWrapper{
     padding-top: 28px;
     padding-left: 38px;
+    padding-bottom: 11px;
   }
   &__title{
     font-size: 22px;
@@ -31,4 +35,40 @@
     stroke-width: 1px;
     margin-right: 8px;
   }
+  &__listItem{
+    height: 56px;
+    border-top: solid 1px var(--grey-middle);
+  }
+  &__listItemIndicatorWrapper{
+    width: 83px;
+    margin-left: 3px;
+  }
+  &__listItemDeviceWrapper{
+    width: 540px;
+    margin-right: 27px;
+  }
+  &__listItemStatusWrapper{
+    width: 110px;
+  }
+
+  &__list{
+    height: 334px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+
+.orderDetails.showOrderDetails{
+  width: 952px;
+  overflow: inherit;
+}
+
+.orderDetails__container{
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-in-out 50ms;
+}
+.showOrderDetails .orderDetails__container{
+  opacity: 1;
+  pointer-events: auto;
 }

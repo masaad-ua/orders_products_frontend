@@ -25,6 +25,7 @@
     text-decoration: underline;
     letter-spacing: 0.8px;
     width: 680px;
+    transition: opacity 300ms ease-in-out 100ms;
   }
 
   &__listItemAmountProductWrapper{
@@ -90,5 +91,7 @@
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
+  width: 0px;
+  overflow: hidden;
 }

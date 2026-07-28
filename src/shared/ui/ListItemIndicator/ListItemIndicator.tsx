@@ -1,4 +1,3 @@
-import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ListItemIndicator.module.scss';
 import {memo} from "react"
@@ -9,7 +8,6 @@ interface ListItemIndicatorProps {
 
 export const ListItemIndicator = memo((props: ListItemIndicatorProps) => {
     const {className, status} = props;
-    const {t} = useTranslation();
 
     return (
         <div className={classNames(className ,

@@ -23,8 +23,6 @@ export const OrdersList = memo((props: OrdersListProps) => {
         shortList,
         selectedOrder,
     } = props;
-
-    console.log("shortList",shortList);
     const onScroll = (e: React.UIEvent<HTMLUListElement>) =>{
         handleScroll(e);
     }

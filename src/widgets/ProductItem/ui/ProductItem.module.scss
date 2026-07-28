@@ -1,7 +1,6 @@
 .products {
   &__listItem{
     height: 70px;
-    width: 2542px;
     background: var(--white);
     border: solid var(--dark_grey) 1px;
     position: relative;
@@ -13,19 +12,14 @@
     width: 77px;
   }
 
-  &__listItemIndicator.free{
+  &__listItemIndicator{
     background: var(--green);
   }
   &__listItemDeviceWrapper{
     width: 540px;
 
   }
-  &__listItemDeviceImage{
-    height: 33px;
-    width: 44px;
-    margin-right: 34px;
-  }
-  &__listItemNameStatusWrapper{
+  &__listItemStatusWrapper{
     width: 110px;
   }
   &__listItemPeriodWrapper{

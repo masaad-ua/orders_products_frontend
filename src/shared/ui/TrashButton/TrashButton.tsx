@@ -6,7 +6,7 @@ interface TrashButtonProps {
     className?: string;
     order?: OrderI;
     onDelete?: (order: OrderI) => void;
-    shortList: boolean;
+    shortList?: boolean;
 }
 
 export const TrashButton = (props: TrashButtonProps) => {
@@ -15,7 +15,8 @@ export const TrashButton = (props: TrashButtonProps) => {
         shortList
     } = props;
 
-    const deleteItem = () =>{
+    const deleteItem = (e:React.MouseEvent<HTMLButtonElement>) =>{
+        e.stopPropagation();
         if (!order || !onDelete) {
             return
         }

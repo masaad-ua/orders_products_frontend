@@ -112,12 +112,11 @@ const OrdersPage = memo((props: OrdersPageProps) => {
                     chooseOrder={chooseOrder}
                     selectedOrder= {selectedOrder}
                 />
-                { selectedOrder &&
-                    <OrderDetails
-                        order={selectedOrder}
-                        onClose={() => setSelectedOrder(null)}
-                    />
-                }
+                <OrderDetails
+                    order={selectedOrder}
+                    onClose={() => setSelectedOrder(null)}
+                />
+
             </div>
         <DeleteOrderModal
             isOpen={isDeleteModalOpen}

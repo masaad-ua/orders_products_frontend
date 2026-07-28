@@ -26,5 +26,14 @@
       "ERRORS_DOWNLOAD_PRODUCTS": "Ошибка загрузки продуктов..."
     }
   },
-  "DOWNLOADS": "Загрузка"
+  "DOWNLOADS": "Загрузка",
+  "STATUS": {
+    "FREE": "Cвободен",
+    "IN_REPAIR": "В ремонте"
+  },
+  "CONDITION": {
+    "NEW": "новый",
+    "USED": "Б/у"
+  }
+
 }

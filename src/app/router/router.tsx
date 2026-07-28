@@ -25,6 +25,7 @@ export const Router = ()=> (
                     <Route path="/products" element={<ProductsPage />} />
                     <Route path="/unauthorized" element={<Unauthorized />} />
                     <Route path="/" element={<Navigate to="/orders" replace />} />
+                    <Route path="*" element={<Navigate to="/orders" replace />} />
                 </Route>
             </Routes>
         </BrowserRouter>

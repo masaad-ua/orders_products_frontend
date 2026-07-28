@@ -29,7 +29,6 @@ export const ProductFilters = memo((props: ProductFiltersProps) => {
                 <select className={classNames(cls.productFilters__formSelect)}
                         value={type}
                         onChange={(e) => {
-                            console.log("e.target.value", e.target.value);
                             onTypeChange(e.target.value)
                         }}>
                     <option value={OptionsTypeEnum.ALL}>All</option>

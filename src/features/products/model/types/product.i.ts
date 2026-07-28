@@ -1,4 +1,3 @@
-import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 
 export interface ProductGuaranteeI {
     start: string,

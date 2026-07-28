@@ -15,7 +15,6 @@ interface TopMenuProps {
 }
 
 export const TopMenu = memo((props: TopMenuProps) => {
-    const { className } = props;
     const {t} = useTranslation();
     const { i18n } = useTranslation();
     const currentLanguage = i18n.resolvedLanguage;

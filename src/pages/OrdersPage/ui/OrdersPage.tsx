@@ -84,7 +84,9 @@ const OrdersPage = memo((props: OrdersPageProps) => {
     }
 
     return (
-        <div className={classNames(cls.orders, {}, [className])}>
+        <div className={classNames(cls.orders, {
+            [cls.orders__greyBackground]:selectedOrder !== null
+        }, [className])}>
             <div className="d-flex">
                 <img
                     className={cls.orders__titleIcon}

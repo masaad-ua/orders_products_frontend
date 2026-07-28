@@ -38,6 +38,10 @@
   &__listItem{
     height: 56px;
     border-top: solid 1px var(--grey-middle);
+    transition: box-shadow 300ms ease-in-out;
+  }
+  &__listItem:hover{
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   }
   &__listItemIndicatorWrapper{
     width: 83px;

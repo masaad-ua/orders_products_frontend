@@ -1,6 +1,5 @@
 .orders {
   padding: 67px 0px 0px 122px;
-  position: relative;
 
   &__titleIcon {
     margin-right: 21px;
@@ -17,5 +16,9 @@
 
 .shortList .orders__listItemTitle {
   display: none;
+}
+
+.orders.orders__greyBackground{
+  background: var(--grey);
 }
 

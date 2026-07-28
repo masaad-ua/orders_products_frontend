@@ -11,14 +11,8 @@
   &__listItemIndicatorWrapper{
     height: inherit;
     width: 77px;
+  }
 
-  }
-  &__listItemIndicator{
-    height: 10px;
-    width: 10px;
-    background: var(--black);
-    border-radius: 50%;
-  }
   &__listItemIndicator.free{
     background: var(--green);
   }
@@ -33,9 +27,6 @@
   }
   &__listItemNameStatusWrapper{
     width: 110px;
-  }
-  &__listItemNameStatus.free{
-    color: var(--green);
   }
   &__listItemPeriodWrapper{
     width: 190px;

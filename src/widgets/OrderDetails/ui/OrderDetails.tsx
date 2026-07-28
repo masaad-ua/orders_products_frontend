@@ -5,6 +5,7 @@ import {memo} from "react"
 import {CloseButton} from "@/shared/ui/CloseButton";
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 import {CirclePlus} from "lucide-react";
+import type {ProductI} from "@/features/products/model/types/product.i.ts";
 
 interface OrderDetailsProps {
     className?: string;
@@ -35,7 +36,13 @@ export const OrderDetails = memo((props: OrderDetailsProps) => {
                 </div>
             </div>
             <ul>
-                <li></li>
+                {
+                    order.products.map((product: ProductI) => (
+                        <li>
+                            
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     );

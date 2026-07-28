@@ -9,6 +9,7 @@ import {DateItem} from "@/shared/ui/DateItem";
 import {TrashButton} from "@/shared/ui/TrashButton";
 import type {ProductI} from "@/features/products/model/types/product.i.ts";
 import {getDateFormat} from "@/shared/services/dateService.ts";
+import {ListItemIndicator} from "@/shared/ui/ListItemIndicator";
 
 interface ProductItemProps {
     className?: string;
@@ -35,13 +36,18 @@ export const ProductItem = memo((props: ProductItemProps) => {
         <li
             key={product.id}
             className={classNames(cls.products__listItem,{}, ["d-flex"])}>
-            <div className={classNames(cls.products__listItemIndicatorWrapper,
-                {},
-                ["d-flex", "justify-content-center" ,"align-items-center"] )}>
-                <div className={classNames(cls.products__listItemIndicator, {
-                    [cls.free]: product.status === 1
-                })}></div>
-            </div>
+            {/*<div className={classNames(cls.products__listItemIndicatorWrapper,*/}
+            {/*    {},*/}
+            {/*    ["d-flex", "justify-content-center" ,"align-items-center"] )}>*/}
+            {/*    <div className={classNames(cls.products__listItemIndicator, {*/}
+            {/*        [cls.free]: product.status === 1*/}
+            {/*    })}></div>*/}
+            {/*</div>*/}
+
+            <ListItemIndicator
+                status={product.status}
+                className={cls.products__listItemIndicatorWrapper}
+            />
 
 
             <div className={classNames(cls.products__listItemDeviceWrapper,

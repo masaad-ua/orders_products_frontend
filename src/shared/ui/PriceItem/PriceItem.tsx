@@ -6,7 +6,7 @@ interface PriceItemProps {
     className?: string;
     priceUAH: number,
     priceUSD: number,
-    shortList: boolean
+    shortList?: boolean
 }
 
 export const PriceItem = memo((props: PriceItemProps) => {

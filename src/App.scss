@@ -6,7 +6,8 @@
 }
 
 h2, p, .h2 {
-    margin: 0px ;
+    margin: 0px;
+    color: var(--black);
 }
 .h_100 {
     height: 100%;
@@ -22,6 +23,10 @@ p{
 
 .color_grey {
     color: var(--dark_grey);
+}
+
+.color_green {
+    color: var(--green);
 }
 
 .font_size_12 {

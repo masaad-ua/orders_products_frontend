@@ -1,4 +1,3 @@
-import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './PriceItem.module.scss';
 import {memo} from "react"
@@ -6,18 +5,22 @@ import {memo} from "react"
 interface PriceItemProps {
     className?: string;
     priceUAH: number,
-    priceUSD: number
+    priceUSD: number,
+    shortList: boolean
 }
 
 export const PriceItem = memo((props: PriceItemProps) => {
     const {className,
         priceUAH,
-        priceUSD
+        priceUSD,
+        shortList
     } = props;
     const classes = `${cls.priceItem} + ${className}`;
 
     return (
-        <div className={classes}>
+        <div className={classNames(classes, {
+            [cls.hidden]: shortList
+        })}>
             <div className={
                 classNames(cls.priceItem__price1,
                     {}, ["color_grey", "font_size_12"])

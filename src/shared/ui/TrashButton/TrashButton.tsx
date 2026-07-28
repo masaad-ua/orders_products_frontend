@@ -1,14 +1,19 @@
 import cls from './TrashButton.module.scss';
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
+import {classNames} from "@/shared/lib/classNames/classNames.ts";
 
 interface TrashButtonProps {
     className?: string;
-    order?: OrderI,
+    order?: OrderI;
     onDelete?: (order: OrderI) => void;
+    shortList: boolean;
 }
 
 export const TrashButton = (props: TrashButtonProps) => {
-    const { onDelete, order} = props;
+    const { onDelete,
+        order,
+        shortList
+    } = props;
 
     const deleteItem = () =>{
         if (!order || !onDelete) {
@@ -23,7 +28,9 @@ export const TrashButton = (props: TrashButtonProps) => {
 
         <button
             onClick={deleteItem}
-            className={cls.trashButton}
+            className={classNames(cls.trashButton, {
+                [cls.hidden]: shortList
+            })}
         ></button>
     );
 };

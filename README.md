@@ -254,4 +254,4 @@ NestJS
 
 ## Автор
 
-Maksym Osypchuk
+Maksym Osypchuk 

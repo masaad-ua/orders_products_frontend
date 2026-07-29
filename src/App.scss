@@ -20,6 +20,10 @@ ul {
 p{
     font-size: 16px;
 }
+#root {
+    height: 100vh;
+    overflow-y: hidden;
+}
 
 .color_grey {
     color: var(--dark_grey);

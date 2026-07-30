@@ -1,4 +1,4 @@
-# Inventory
+# Orders_products
 
 Тестовое задание, реализованное на **React + TypeScript + Vite**.
 
@@ -114,6 +114,22 @@ npm install
 npm run dev
 ```
 
+## 📡 Backend
+
+Проект использует отдельный NestJS API.
+
+По умолчанию ожидается запуск сервера по адресу
+
+```
+http://localhost:3000
+```
+
+Swagger API
+
+```
+http://localhost:3000/api/docs
+```
+
 ---
 ## Используемые команды
 
@@ -138,32 +154,10 @@ npm run preview
 Просмотр production сборки
 
 ```bash
-npm run lint
-```
-
-Проверка ESLint
-
-```bash
 npm run test
 ```
 
 Запуск тестов
-
----
-
-### Backend
-
-```bash
-npm run start
-```
-
-```bash
-npm run start:dev
-```
-
-```bash
-npm run build
-```
 
 ---
 
@@ -191,66 +185,27 @@ npm run build
 
 ---
 
-## API
-
-Основные эндпоинты
-
-```
-POST /api/auth/login
-
-GET /api/orders
-
-GET /api/orders/:id
-
-DELETE /api/orders/:id
-
-GET /api/products
-```
-
-Полная документация API доступна через Swagger.
-
----
-
 ## Деплой
 
 Frontend
 
-Vercel
+Vercel="https://test-react-dzencode-beige.vercel.app/orders"
 
 Backend
 
-NestJS
+Render="https://test-react-dzencode-server.onrender.com/api/"
 
 ---
 
-## Скриншоты
+# Используемая стратегия ветвления
 
-### Orders
+Проект разрабатывался с использованием **Git Flow**.
 
-> добавить скриншот
+Основные ветки:
 
-### Order Details
-
-> добавить скриншот
-
-### Delete Modal
-
-> добавить скриншот
-
----
-
-## Что можно улучшить
-
-- Unit-тесты
-- E2E тесты
-- Виртуализация списков
-- Темная тема
-- Drag & Drop
-- Фильтрация и поиск
-- Создание и редактирование приходов
-- Создание и редактирование продуктов
-
----
+- **main** — стабильная версия проекта;
+- **develop** — основная ветка разработки;
+- **feature/*** — ветки для реализации отдельных задач.
 
 ## Автор
 

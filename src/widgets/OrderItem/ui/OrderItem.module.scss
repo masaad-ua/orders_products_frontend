@@ -1,12 +1,24 @@
 .orders {
   &__listItem{
     height: 70px;
-    width: 1435px;
-    border: solid 1px var(--dark_grey);
+    width: 100%;
+    border: solid 1px var(--gray-middle);
     border-radius: 5px;
     padding-left: 36px;
     position: relative;
     margin-bottom: 12px;
+    cursor: pointer;
+    transition: box-shadow 300ms ease-in-out;
+    background: var(--white);
+  }
+
+  &__listItem:hover,
+  &__listItem.active .orders__arrow{
+    display: block;
+  }
+
+  &__listItem.active {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   }
 
   &__listItemTitle{
@@ -14,10 +26,10 @@
     text-decoration: underline;
     letter-spacing: 0.8px;
     width: 680px;
+    transition: opacity 300ms ease-in-out 100ms;
   }
 
   &__listItemAmountProductWrapper{
-    /* margin-right: 73px; */
     width: 154px;
   }
   &__listItemAmountProductButton{
@@ -56,4 +68,31 @@
   &__listItemPrice2Currency{
     font-size: 12px;
   }
+
+  &__arrow{
+    height: 100%;
+    width: 50px;
+    background: var(--gray-middle);
+    border-radius: 0px 5px 5px 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: none;
+  }
+
+
+  &__arrowChevron{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    stroke-width: 3px ;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  width: 0px;
+  overflow: hidden;
 }

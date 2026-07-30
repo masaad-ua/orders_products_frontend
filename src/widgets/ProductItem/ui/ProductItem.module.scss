@@ -1,7 +1,6 @@
 .products {
   &__listItem{
     height: 70px;
-    width: 2542px;
     background: var(--white);
     border: solid var(--dark_grey) 1px;
     position: relative;
@@ -11,31 +10,17 @@
   &__listItemIndicatorWrapper{
     height: inherit;
     width: 77px;
+  }
 
-  }
   &__listItemIndicator{
-    height: 10px;
-    width: 10px;
-    background: var(--black);
-    border-radius: 50%;
-  }
-  &__listItemIndicator.free{
     background: var(--green);
   }
   &__listItemDeviceWrapper{
     width: 540px;
 
   }
-  &__listItemDeviceImage{
-    height: 33px;
-    width: 44px;
-    margin-right: 34px;
-  }
-  &__listItemNameStatusWrapper{
+  &__listItemStatusWrapper{
     width: 110px;
-  }
-  &__listItemNameStatus.free{
-    color: var(--green);
   }
   &__listItemPeriodWrapper{
     width: 190px;

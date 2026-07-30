@@ -11,6 +11,7 @@ import {DeleteOrderModal} from "@/features/orders/ui";
 import {useDeleteOrderMutation, useGetOrdersQuery} from "@/features/orders/api/ordersApi";
 import type {OrderI} from "@/features/orders/model/types/order.i";
 import {useInfiniteScroll} from "@/shared/lib/hooks/useInfiniteScroll.ts";
+import {OrderDetails} from "@/widgets/OrderDetails";
 
 interface OrdersPageProps {
     className?: string;
@@ -21,6 +22,7 @@ const OrdersPage = memo((props: OrdersPageProps) => {
     const {t} = useTranslation();
     const [deleteOrder] = useDeleteOrderMutation();
     const [page, setPage] = useState(1);
+    const [selectedOrder, setSelectedOrder] = useState<OrderI | null>(null);
 
     const {
         data: response,
@@ -42,32 +44,36 @@ const OrdersPage = memo((props: OrdersPageProps) => {
         isLoading,
     });
 
-    const [selectedOrder, setSelectedOrder] = useState<OrderI | null>(null);
+    const [orderForDelete, setOrderForDelete] = useState<OrderI | null>(null);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
     const handleDeleteClick = (order: OrderI) => {
-        setSelectedOrder(order);
+        setOrderForDelete(order);
         setIsDeleteModalOpen(true);
     };
 
     const handleDeleteOrder = async () => {
-        if (!selectedOrder) {
+        if (!orderForDelete) {
             return;
         }
 
         try {
-            await deleteOrder(selectedOrder.id).unwrap();
+            await deleteOrder(orderForDelete.id).unwrap();
 
             setOrders((prev) =>
-                prev.filter((order) => order.id !== selectedOrder.id),
+                prev.filter((order) => order.id !== orderForDelete.id),
             );
 
             setIsDeleteModalOpen(false);
-            setSelectedOrder(null);
+            setOrderForDelete(null);
         } catch (error) {
             console.error(error);
         }
     };
+
+    const chooseOrder = (order: OrderI)=> {
+        setSelectedOrder(order);
+    }
 
     if (isLoading && page === 1) {
         return <div>{t("DOWNLOADS")}</div>
@@ -78,40 +84,48 @@ const OrdersPage = memo((props: OrdersPageProps) => {
     }
 
     return (
-        <div className={classNames(cls.orders, {}, [className])}>
-            <div className={cls.orders__titleWrapper}>
-                <div className="d-flex">
-                    <img
-                        className={cls.orders__titleIcon}
-                        src={Circle}
-                        alt=""
-                    />
-
-                    <h2 className={classNames(cls.orders__title, {}, ["h2"])}>
-                        Приходы&nbsp;/&nbsp;
-                        {response?.pagination.total ?? orders.length}
-                    </h2>
-                </div>
-
-                <OrdersList
-                    orders={orders}
-                    handleScroll={handleScroll}
-                    onDelete={handleDeleteClick}
+        <div className={classNames(cls.orders, {
+            [cls.orders__greyBackground]:selectedOrder !== null
+        }, [className])}>
+            <div className="d-flex">
+                <img
+                    className={cls.orders__titleIcon}
+                    src={Circle}
+                    alt=""
                 />
 
-                {isLoading && page > 1 && (
-                    <div className="text-center p-3">
-                        Загрузка...
-                    </div>
-                )}
+                <h2 className={classNames(cls.orders__title, {}, ["h2"])}>
+                    Приходы&nbsp;/&nbsp;
+                    {response?.pagination.total ?? orders.length}
+                </h2>
             </div>
+            {isLoading && page > 1 && (
+                <div className="text-center p-3">
+                    Загрузка...
+                </div>
+            )}
 
-            <DeleteOrderModal
-                isOpen={isDeleteModalOpen}
-                order={selectedOrder}
-                onClose={() => setIsDeleteModalOpen(false)}
-                onConfirm={handleDeleteOrder}
-            />
+            <div className={classNames(cls.orders__listDetailsWrapper, {}, ["d-flex"])}>
+                <OrdersList
+                    orders={orders}
+                    shortList = {!!selectedOrder}
+                    handleScroll={handleScroll}
+                    onDelete={handleDeleteClick}
+                    chooseOrder={chooseOrder}
+                    selectedOrder= {selectedOrder}
+                />
+                <OrderDetails
+                    order={selectedOrder}
+                    onClose={() => setSelectedOrder(null)}
+                />
+
+            </div>
+        <DeleteOrderModal
+            isOpen={isDeleteModalOpen}
+            order={orderForDelete}
+            onClose={() => setIsDeleteModalOpen(false)}
+            onConfirm={handleDeleteOrder}
+        />
         </div>
     );
 });

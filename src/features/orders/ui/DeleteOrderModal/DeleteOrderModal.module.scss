@@ -7,8 +7,12 @@
 
   &__overlay {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--light-black);
+    opacity: 0.6;
     inset: 0;
-    background: rgba(53, 69, 79, .65);
+    pointer-events: none;
   }
 
   &__content {
@@ -19,19 +23,7 @@
     border-radius: 4px;
     background: var(--white);
     z-index: 1;
-  }
-
-  &__closeButton {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background: var(--white);
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   }
 
   &__body {
@@ -72,7 +64,7 @@
   }
 
   &__productSerial {
-    color: var(--grey);
+    color: var(--gray);
     font-size: 22px;
     text-decoration: underline;
   }
@@ -109,5 +101,6 @@
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
+    box-shadow: 9px 6px 20px rgba(0, 0, 0, 0.3);
   }
 }

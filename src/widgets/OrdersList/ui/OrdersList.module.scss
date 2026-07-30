@@ -1,9 +1,16 @@
 .orders {
-  &__list{
-    margin-top: 60px;
+  &__list {
     height: 405px;
     overflow-y: scroll;
     overflow-x: hidden;
-    width: 1460px;
+    width: 100%;
+    transition: width 300ms ease-in-out 50ms;
+    padding-right: 10px;
   }
+}
+
+.shortList {
+  width: 477px;
+  margin-right: 8px;
+  height: 325px;
 }

@@ -11,11 +11,13 @@ import {
 
 interface DateItemProps {
     className?: string;
-    dateItem: string
+    dateItem: string;
 }
 
 export const DateItem = memo((props: DateItemProps) => {
-    const {className, dateItem} = props;
+    const {className,
+        dateItem,
+    } = props;
     const classes: string = `${cls.dateItem} + ${className}`;
     const date: Date = new Date(dateItem);
     const {

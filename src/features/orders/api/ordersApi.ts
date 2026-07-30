@@ -1,11 +1,12 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {tokenStorage} from "@/shared/lib/tokenStorage/tokenStorage.ts";
 import type {OrderI, OrdersResponse} from "@/features/orders/model/types/order.i.ts";
+import {API_URL} from "@/shared/config/env.ts";
 
 export const ordersApi = createApi({
     reducerPath: "ordersApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:3000/api",
+        baseUrl: API_URL,
         prepareHeaders: (headers) => {
             const token = tokenStorage.get();
             if (token) {

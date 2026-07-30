@@ -9,6 +9,7 @@ import {ROUTES} from "@/shared/const/routes.const.ts";
 
 interface SideBarProps {
     className?: string;
+    setBackground?: ()=> void;
 }
 
 export const SideBar = memo((props: SideBarProps) => {
@@ -16,8 +17,7 @@ export const SideBar = memo((props: SideBarProps) => {
     const {t} = useTranslation();
 
     return (
-        <aside className={classNames(className || "")}>
-            <div className={classNames(cls.sidebar,
+            <aside className={classNames(cls.sidebar,
                 {},
                 ["d-flex", "flex-column", "justify-content-start", "align-items-center"])}
             >
@@ -92,7 +92,6 @@ export const SideBar = memo((props: SideBarProps) => {
                     </li>
                 </ul>
 
-            </div>
-        </aside>
+            </aside>
     );
 });

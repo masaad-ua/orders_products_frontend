@@ -6,7 +6,8 @@
 }
 
 h2, p, .h2 {
-    margin: 0px ;
+    margin: 0px;
+    color: var(--black);
 }
 .h_100 {
     height: 100%;
@@ -19,9 +20,17 @@ ul {
 p{
     font-size: 16px;
 }
+#root {
+    height: 100vh;
+    overflow-y: hidden;
+}
 
 .color_grey {
     color: var(--dark_grey);
+}
+
+.color_green {
+    color: var(--green);
 }
 
 .font_size_12 {
@@ -35,4 +44,8 @@ p{
 .h2 {
     font-size: 28px;
     font-weight: bold;
+}
+
+.gray {
+    background: var(--gray);
 }

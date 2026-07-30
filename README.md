@@ -1,75 +1,212 @@
-# React + TypeScript + Vite
+# Orders_products
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестовое задание, реализованное на **React + TypeScript + Vite**.
 
-Currently, two official plugins are available:
+## Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Авторизация по JWT
+- Автоматическая авторизация при запуске приложения
+- Защищенные маршруты (Protected Routes)
+- Просмотр списка приходов
+- Бесконечная прокрутка (Infinite Scroll)
+- Просмотр детальной информации о приходе
+- Подсчет количества продуктов и общей стоимости
+- Удаление прихода с подтверждением
+- WebSocket-счетчик активных пользователей
+- Адаптивная архитектура Feature-Sliced Design (FSD)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Стек технологий
 
-## Expanding the ESLint configuration
+### Frontend
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- Redux Toolkit
+- RTK Query
+- React Router
+- SCSS Modules
+- Bootstrap
+- React Intersection Observer
+- Socket.IO Client
+- i18next
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Backend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- NestJS
+- TypeScript
+- JWT Authentication
+- Socket.IO
+- Swagger
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Структура проекта
 
 ```
+src
+│
+├── app
+├── pages
+├── widgets
+├── features
+├── entities
+├── shared
+└── assets
+```
+
+Проект построен по принципам **Feature-Sliced Design (FSD)**.
+
+---
+
+## Основной функционал
+
+### Авторизация
+
+При первом запуске приложения автоматически выполняется вход.
+
+JWT-токен сохраняется в LocalStorage и используется для последующих запросов.
+
+---
+
+### Orders
+
+- получение списка приходов;
+- пагинация;
+- Infinite Scroll;
+- просмотр деталей прихода;
+- удаление прихода;
+- отображение количества продуктов;
+- отображение общей стоимости.
+
+---
+
+### Products
+
+- просмотр списка продуктов;
+- привязка продуктов к приходу;
+- отображение цены;
+- отображение статуса продукта.
+
+---
+
+### WebSocket
+
+Верхняя панель отображает количество пользователей, одновременно работающих в приложении.
+
+---
+
+## Запуск проекта
+
+### Frontend
+
+Установка зависимостей
+
+```bash
+npm install
+```
+
+Запуск
+
+```bash
+npm run dev
+```
+
+## Backend
+
+Проект использует отдельный NestJS API.
+
+По умолчанию ожидается запуск сервера по адресу
+
+```
+http://localhost:3000
+```
+
+Swagger API
+
+```
+http://localhost:3000/api/docs
+```
+
+---
+## Используемые команды
+
+### Frontend
+
+```bash
+npm run dev
+```
+
+Запуск проекта
+
+```bash
+npm run build
+```
+
+Сборка production
+
+```bash
+npm run preview
+```
+
+Просмотр production сборки
+
+```bash
+npm run test
+```
+
+Запуск тестов
+
+---
+
+## Архитектурные решения
+
+В проекте использованы следующие подходы:
+
+- Feature-Sliced Design
+- Redux Toolkit
+- RTK Query
+- Кастомные React Hooks
+- SCSS Modules
+- Компонентный подход
+- Lazy Loading
+- Infinite Scroll
+- JWT Authentication
+- WebSocket
+
+---
+
+## Реализованные кастомные хуки
+
+- useInfiniteScroll
+- useSessions
+
+---
+
+## Деплой
+
+Frontend
+
+Vercel="https://test-react-dzencode-beige.vercel.app/orders"
+
+Backend
+
+Render="https://test-react-dzencode-server.onrender.com/api/"
+
+---
+
+# Используемая стратегия ветвления
+
+Проект разрабатывался с использованием **Git Flow**.
+
+Основные ветки:
+
+- **main** — стабильная версия проекта;
+- **develop** — основная ветка разработки;
+- **feature/*** — ветки для реализации отдельных задач.
+
+## Автор
+
+Maksym Osypchuk 

@@ -3,7 +3,7 @@ import type {ProductI} from "@/features/products/model/types/product.i.ts";
 export interface OrderI{
     id: number;
     title: string;
-    date: string;
+    created_at: string;
     description: string;
     products: ProductI[],
     productsCount: number,

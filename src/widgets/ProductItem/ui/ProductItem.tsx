@@ -90,7 +90,7 @@ export const ProductItem = memo((props: ProductItemProps) => {
                 className={cls.products__listItemNameOfOrdersWrapper}
             />
             <DateItem
-                dateItem={product.date}
+                dateItem={product.created_at}
                 className={cls.products__listItemDateWrapper}
             />
             <TrashButton/>

@@ -23,7 +23,7 @@ export interface ProductI {
     guarantee: ProductGuaranteeI
     price: ProductPriceI[],
     order: number,
-    date: string,
+    created_at: string,
     dateTo: string,
     dateFrom: string
 }

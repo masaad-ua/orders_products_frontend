@@ -61,7 +61,7 @@ export const OrderItem = memo((props: OrderItemProps) => {
             </div>
             <DateItem
                 className={cls.orders__listItemDateWrapper}
-                dateItem={order.date}
+                dateItem={order.created_at}
             />
             <PriceItem
                 priceUAH={order.totalUAH}

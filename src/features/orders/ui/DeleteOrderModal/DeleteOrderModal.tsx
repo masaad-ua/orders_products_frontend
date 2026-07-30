@@ -4,6 +4,8 @@ import cls from './DeleteOrderModal.module.scss';
 import type {OrderI} from "@/features/orders/model/types/order.i.ts";
 import {classNames} from "@/shared/lib/classNames/classNames.ts";
 import {CloseButton} from "@/shared/ui/CloseButton";
+import {useContext, useEffect} from "react";
+import {ThemeContext} from "@/app/providers/ThemeProvider/ThemeContext.ts";
 
 interface DeleteOrderModalProps {
     isOpen: boolean;
@@ -18,14 +20,19 @@ export const DeleteOrderModal = ({
                                      onConfirm,
                                     order,
                                  }: DeleteOrderModalProps) => {
+    const { setTheme } = useContext(ThemeContext);
     if (!isOpen ) {
+        setTheme("white");
         return null;
+    }else {
+        setTheme("popup");
     }
 
     return (
         <div className={classNames(cls.deleteOrderModal, {}, [
             "d-flex", "justify-content-center", "align-items-center"
         ])}>
+            <div className={cls.deleteOrderModal__overlay} />
 
             <div className={classNames(cls.deleteOrderModal__content, {},
                 ["d-flex", "flex-column" ])}>
@@ -63,7 +70,6 @@ export const DeleteOrderModal = ({
                     </button>
                 </div>
             </div>
-            <div className={cls.deleteOrderModal__overlay} />
         </div>
     );
 };

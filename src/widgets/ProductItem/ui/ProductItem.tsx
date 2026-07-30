@@ -36,7 +36,8 @@ export const ProductItem = memo((props: ProductItemProps) => {
     return (
         <li
             key={product.id}
-            className={classNames(cls.products__listItem,{}, ["d-flex"])}>
+            className={classNames(cls.products__listItem,{},
+                ["d-flex"])}>
             <ListItemIndicator
                 status={product.status}
                 className={cls.products__listItemIndicatorWrapper}

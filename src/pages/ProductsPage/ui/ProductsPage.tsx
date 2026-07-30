@@ -1,13 +1,14 @@
 import {useTranslation} from 'react-i18next';
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ProductsPage.module.scss';
-import {memo, useMemo, useState} from "react"
+import {memo, useContext, useEffect, useMemo, useState} from "react"
 import {ProductFilters} from "@/widgets/ProductFilters";
 import {ProductsList} from "@/widgets/ProductsList";
 import {useGetProductsQuery} from "@/features/products/api/productsApi.ts";
 import type {ProductI} from "@/features/products/model/types/product.i.ts";
 import {useInfiniteScroll} from "@/shared/lib/hooks/useInfiniteScroll.ts";
 import {OptionsTypeEnum} from "@/shared/const/options.enum.ts";
+import {ThemeContext} from "@/app/providers/ThemeProvider/ThemeContext.ts";
 
 interface ProductsPageProps {
     className?: string;
@@ -18,6 +19,7 @@ const ProductsPage = memo((props: ProductsPageProps) => {
     const {t} = useTranslation();
     const [page, setPage] = useState(1);
     const [selectedType, setSelectedType] = useState("");
+    const { setTheme } = useContext(ThemeContext);
 
     const {
         data: response,
@@ -51,6 +53,13 @@ const ProductsPage = memo((props: ProductsPageProps) => {
 
         });
     }, [products, selectedType]);
+
+    useEffect(() => {
+        setTheme("gray");
+        return () => {
+            setTheme("white");
+        };
+    },[])
 
     if(isLoading && page === 1){
         return <div>{t("DOWNLOADS")}</div>

@@ -34,43 +34,45 @@ export const TopMenu = memo((props: TopMenuProps) => {
     const locate = getLocale(currentLanguage);
 
     return (
-        <header className={cls.header}>
-            <div className={"container-fluid"}>
-                <div className={ classNames(cls.header__content, {}, ["d-flex align-items-center justify-content-between"])}>
+        <div className={cls.header__wrapper}>
+            <header className={cls.header}>
+                <div className={"container-fluid"}>
+                    <div className={ classNames(cls.header__content, {}, ["d-flex align-items-center justify-content-between"])}>
 
-                    <div className={"d-flex align-items-center"}>
-                        <div className={classNames(cls.header__logo)}>
-                            <img
-                                src={logo}
-                                alt="Inventory"
-                                className={cls.header__logoImage}
-                            />
-                            <h2 className={cls.header__title}>
-                                {t("HEADER.TITLE")}
-                            </h2>
+                        <div className={"d-flex align-items-center"}>
+                            <div className={classNames(cls.header__logo)}>
+                                <img
+                                    src={logo}
+                                    alt="Inventory"
+                                    className={cls.header__logoImage}
+                                />
+                                <h2 className={cls.header__title}>
+                                    {t("HEADER.TITLE")}
+                                </h2>
+                            </div>
+                            <div className={classNames(cls.header__search, {}, [`ms-5`])}>
+                                <input
+                                    type="text"
+                                    className={`form-control ${cls.header__searchInput}`}
+                                    placeholder={t("HEADER.INPUT_PLACEHOLDER")}
+                                />
+                            </div>
                         </div>
-                        <div className={classNames(cls.header__search, {}, [`ms-5`])}>
-                            <input
-                                type="text"
-                                className={`form-control ${cls.header__searchInput}`}
-                                placeholder={t("HEADER.INPUT_PLACEHOLDER")}
+                        <div className={"d-flex h_100"}>
+                            <SessionCounter
+                                className={classNames(cls.header__sessionCounter,
+                                    {},
+                                    ["d-flex", "align-items-end", "justify-content-start"])}
+                                sessions={sessions}
+                            />
+                            <CurrentDateTime
+                                className ={cls.header__dateTimeWrapper}
+                                locale = {locate}
                             />
                         </div>
-                    </div>
-                    <div className={"d-flex h_100"}>
-                        <SessionCounter
-                            className={classNames(cls.header__sessionCounter,
-                                {},
-                                ["d-flex", "align-items-end", "justify-content-start"])}
-                            sessions={sessions}
-                        />
-                        <CurrentDateTime
-                            className ={cls.header__dateTimeWrapper}
-                            locale = {locate}
-                        />
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </div>
     );
 });

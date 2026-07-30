@@ -9,6 +9,7 @@ import {ROUTES} from "@/shared/const/routes.const.ts";
 
 interface SideBarProps {
     className?: string;
+    setBackground?: ()=> void;
 }
 
 export const SideBar = memo((props: SideBarProps) => {

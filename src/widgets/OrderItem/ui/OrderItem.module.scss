@@ -2,7 +2,7 @@
   &__listItem{
     height: 70px;
     width: 100%;
-    border: solid 1px var(--grey-middle);
+    border: solid 1px var(--gray-middle);
     border-radius: 5px;
     padding-left: 36px;
     position: relative;
@@ -72,7 +72,7 @@
   &__arrow{
     height: 100%;
     width: 50px;
-    background: var(--grey-middle);
+    background: var(--gray-middle);
     border-radius: 0px 5px 5px 0px;
     position: absolute;
     top: 0px;

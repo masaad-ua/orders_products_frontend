@@ -1,7 +1,7 @@
 .orderDetails {
 
   position: relative;
-  border: solid 1px var(--grey-middle);
+  border: solid 1px var(--gray-middle);
   background: var(--white);
   border-radius: 5px;
 
@@ -37,7 +37,7 @@
   }
   &__listItem{
     height: 56px;
-    border-top: solid 1px var(--grey-middle);
+    border-top: solid 1px var(--gray-middle);
     transition: box-shadow 300ms ease-in-out;
   }
   &__listItem:hover{

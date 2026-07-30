@@ -114,7 +114,7 @@ npm install
 npm run dev
 ```
 
-## 📡 Backend
+## Backend
 
 Проект использует отдельный NestJS API.
 

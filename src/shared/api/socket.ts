@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
-import {API_URL} from "@/shared/config/env.ts";
+import {SOCKET_URL} from "@/shared/config/env.ts";
 
-export const socket = io(API_URL, {
+export const socket = io(SOCKET_URL, {
     autoConnect: true,
 });
